@@ -1,11 +1,11 @@
 {
   "id": "neo-dark-knight",
   "type": "theme",
-  "name": "Neo Dark Knight (Batman)",
-  "version": "1.0.0",
-  "author": "Your Name",
-  "description": "A modern, ultra-premium Batman-inspired dark theme for 3x-ui.",
+  "name": "Neo Dark Knight — Arkham Edition",
+  "version": "2.0.0",
+  "author": "Parham Pahlevan",
+  "description": "Batman Arkham-inspired monochrome premium theme with red accents.",
   "minPanelVersion": "2.0.0",
   "license": "MIT",
-  "features": ["dark-mode", "responsive", "clipboard", "qr-code", "batman-theme"]
+  "features": ["arkham-design", "responsive", "clipboard", "qr-code", "clash-json", "live-status"]
 }
