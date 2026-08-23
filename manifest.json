@@ -1,0 +1,11 @@
+{
+  "id": "neo-dark-knight",
+  "type": "theme",
+  "name": "Neo Dark Knight (Batman)",
+  "version": "1.0.0",
+  "author": "Your Name",
+  "description": "A modern, ultra-premium Batman-inspired dark theme for 3x-ui.",
+  "minPanelVersion": "2.0.0",
+  "license": "MIT",
+  "features": ["dark-mode", "responsive", "clipboard", "qr-code", "batman-theme"]
+}
