@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Vazirmatn:wght@700&display=swap" rel="stylesheet">
 <style>
 @import url('https://v1.fontapi.ir/css/Doran');
-/* ==== فونت دوران بولد — میزبانی شخصی ==== */
 @font-face{
   font-family:'Doran';
   src:url('https://raw.githubusercontent.com/parhampahlevann/sub/main/fonts/doran-bold.woff2') format('woff2'),
@@ -16,7 +15,7 @@
   font-weight:100 900; font-style:normal; font-display:swap;
 }
 :root{
-  --yellow:#ffd60a; --amber:#ffb703;
+  --yellow:#ffd60a; --amber:#ffb703; --green:#3ddc84;
   --glass:rgba(255,255,255,.10); --glass-dark:rgba(22,7,0,.48);
   --stroke:rgba(255,255,255,.22); --text:#ffffff; --muted:rgba(255,255,255,.68);
 }
@@ -29,7 +28,7 @@ body{
     linear-gradient(180deg, rgba(25,6,0,.30), rgba(12,2,0,.74)),
     url('https://raw.githubusercontent.com/parhampahlevann/sub/main/bg.jpg') center 22%/cover fixed no-repeat;
   background-color:#8a3a00;
-  padding:20px 14px 60px; overflow-x:hidden;
+  padding:16px 12px 40px; overflow-x:hidden;
 }
 .wrap{max-width:880px;margin:0 auto;position:relative;z-index:1}
 
@@ -37,108 +36,111 @@ body{
   background:var(--glass-dark);
   backdrop-filter:blur(18px) saturate(140%);
   -webkit-backdrop-filter:blur(18px) saturate(140%);
-  border:1px solid var(--stroke); border-radius:22px;
-  box-shadow:0 24px 70px rgba(0,0,0,.5);
+  border:1px solid var(--stroke); border-radius:18px;
+  box-shadow:0 18px 50px rgba(0,0,0,.5);
 }
 .gbtn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
   background:var(--glass); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-  border:1px solid var(--stroke); border-radius:14px; color:#fff;
-  padding:12px 20px; font-family:'Doran','Vazirmatn',sans-serif; font-weight:700; font-size:.9rem;
+  border:1px solid var(--stroke); border-radius:11px; color:#fff;
+  padding:9px 14px; font-family:'Doran','Vazirmatn',sans-serif; font-weight:700; font-size:.78rem;
   cursor:pointer; transition:.25s; text-decoration:none;
 }
-.gbtn:hover{background:rgba(255,255,255,.22);transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.4)}
+.gbtn:hover{background:rgba(255,255,255,.22);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.4)}
 
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 26px;margin-bottom:22px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:14px}
-.brand svg{width:46px;fill:var(--yellow);filter:drop-shadow(0 0 10px rgba(255,214,10,.55))}
-.brand h1{font-size:1.3rem;font-weight:900}
-.brand small{display:block;font-family:'Oswald';font-size:.62rem;letter-spacing:.42em;color:var(--muted);font-weight:500}
-.live{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--muted)}
-.live i{width:10px;height:10px;border-radius:50%}
-.live.on i{background:#3ddc84;box-shadow:0 0 12px #3ddc84;animation:blink 1.6s infinite}
-.live.off i{background:#bbb}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;margin-bottom:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.brand svg{width:38px;fill:var(--yellow);filter:drop-shadow(0 0 10px rgba(255,214,10,.55))}
+.brand h1{font-size:1.1rem;font-weight:900}
+.brand small{display:block;font-family:'Oswald';font-size:.58rem;letter-spacing:.42em;color:var(--muted);font-weight:500}
+.live{display:flex;align-items:center;gap:7px;font-size:.76rem;color:var(--muted)}
+.live i{width:9px;height:9px;border-radius:50%}
+.live.on{color:var(--green)}
+.live.on i{background:var(--green);box-shadow:0 0 12px var(--green);animation:blink 1.6s infinite}
+/* ✅ کلمه «فعال» با رنگ سبز */
+.live.off{color:var(--green)}
+.live.off i{background:var(--green);box-shadow:0 0 10px var(--green)}
+.live.dead{color:#ff8080}
 .live.dead i{background:#ff3b3b;box-shadow:0 0 12px #ff3b3b}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-.hero{padding:30px 30px 26px;margin-bottom:22px;position:relative;overflow:hidden}
+/* hero فشرده — بدون عنوان بزرگ */
+.hero{padding:20px 22px 18px;margin-bottom:16px;position:relative;overflow:hidden}
 .hero::after{content:'';position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(circle at 85% 15%, rgba(255,183,3,.14), transparent 55%)}
-.kicker{font-family:'Oswald';letter-spacing:.55em;font-size:.7rem;color:var(--amber);font-weight:500}
-.hero h2{font-size:clamp(1.9rem,6vw,3rem);font-weight:900;margin:10px 0 4px}
-.hero .mail{color:var(--muted);font-size:.85rem;word-break:break-all}
-.badge{display:inline-flex;align-items:center;gap:8px;margin-top:14px;margin-left:8px;
+.hero .mail{color:var(--muted);font-size:.82rem;word-break:break-all}
+.badge{display:inline-flex;align-items:center;gap:7px;margin-top:10px;margin-left:8px;
   background:var(--glass);backdrop-filter:blur(10px);
-  border:1px solid var(--stroke);border-radius:99px;padding:7px 18px;font-size:.8rem;font-weight:700}
+  border:1px solid var(--stroke);border-radius:99px;padding:5px 14px;font-size:.74rem;font-weight:700}
 .badge.dead{border-color:rgba(255,59,59,.6);color:#ff9090}
 
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
-.tile{padding:18px 10px;text-align:center}
-.tile b{display:block;font-family:'Oswald';font-weight:600;font-size:1.25rem;direction:ltr;margin-bottom:6px}
-.tile span{font-size:.7rem;letter-spacing:.18em;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.tile{padding:12px 8px;text-align:center}
+.tile b{display:block;font-family:'Oswald';font-weight:600;font-size:1.05rem;direction:ltr;margin-bottom:4px}
+.tile span{font-size:.62rem;letter-spacing:.18em;color:var(--muted)}
 .tile.y b{color:var(--yellow);text-shadow:0 0 16px rgba(255,214,10,.55)}
 
-.traffic{padding:22px 26px;margin-bottom:22px}
-.traffic .lbl{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-bottom:12px}
+.traffic{padding:16px 20px;margin-bottom:16px}
+.traffic .lbl{display:flex;justify-content:space-between;font-size:.76rem;color:var(--muted);margin-bottom:10px}
 .traffic .lbl b{color:var(--yellow)}
-.track{height:18px;border-radius:99px;overflow:hidden;position:relative;
+.track{height:14px;border-radius:99px;overflow:hidden;position:relative;
   background:rgba(255,255,255,.08);border:1px solid var(--stroke);backdrop-filter:blur(10px)}
 .fill{position:absolute;top:0;bottom:0;right:0;width:0%;border-radius:99px;
   background:linear-gradient(90deg, rgba(255,214,10,.95), rgba(255,236,110,.55));
   box-shadow:0 0 24px rgba(255,214,10,.7), inset 0 0 14px rgba(255,255,255,.45);
   transition:width 1.3s cubic-bezier(.2,.8,.2,1)}
 
-.sec{display:flex;align-items:center;gap:12px;margin:0 4px 14px}
-.sec h3{font-size:1.05rem;font-weight:900}
+.sec{display:flex;align-items:center;gap:10px;margin:0 4px 10px}
+.sec h3{font-size:.95rem;font-weight:900}
 .sec .line{flex:1;height:1px;background:linear-gradient(90deg,var(--stroke),transparent)}
-.card-block{padding:10px;margin-bottom:22px}
+.card-block{padding:8px;margin-bottom:16px}
 
 .configs{counter-reset:cfg}
-.row{counter-increment:cfg;display:flex;align-items:center;gap:14px;padding:15px 18px;border-radius:16px;transition:.2s}
-.row + .row{margin-top:8px}
+.row{counter-increment:cfg;display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:13px;transition:.2s}
+.row + .row{margin-top:6px}
 .row:hover{background:rgba(255,255,255,.07)}
-.idx{font-family:'Oswald';font-size:1.05rem;color:var(--amber);min-width:34px;text-align:center;font-weight:600}
+.idx{font-family:'Oswald';font-size:.95rem;color:var(--amber);min-width:30px;text-align:center;font-weight:600}
 .idx::before{content:counter(cfg,decimal-leading-zero)}
 .meta{flex:1;min-width:0}
-.meta .name{font-weight:700;font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.meta .proto{font-family:'Oswald';font-size:.62rem;letter-spacing:.3em;color:var(--muted);font-weight:500}
+.meta .name{font-weight:700;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta .proto{font-family:'Oswald';font-size:.58rem;letter-spacing:.3em;color:var(--muted);font-weight:500}
 .copy{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--stroke);
-  border-radius:12px;color:#fff;padding:9px 18px;font-family:'Doran','Vazirmatn',sans-serif;
-  font-weight:700;font-size:.8rem;cursor:pointer;transition:.2s;flex-shrink:0}
+  border-radius:10px;color:#fff;padding:7px 14px;font-family:'Doran','Vazirmatn',sans-serif;
+  font-weight:700;font-size:.72rem;cursor:pointer;transition:.2s;flex-shrink:0}
 .copy:hover{background:rgba(255,214,10,.25);border-color:rgba(255,214,10,.6);color:var(--yellow)}
-.empty{padding:30px;text-align:center;color:var(--muted)}
+.empty{padding:24px;text-align:center;color:var(--muted)}
 
-.actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;padding:18px}
+.actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;padding:14px}
 
-.copy-all{width:100%;margin-top:4px;padding:22px;border-radius:20px;
-  display:flex;align-items:center;justify-content:center;gap:14px;
-  font-family:'Doran','Vazirmatn',sans-serif;font-size:1.3rem;font-weight:900;color:#ffe45c;
+.copy-all{width:100%;margin-top:2px;padding:16px;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-family:'Doran','Vazirmatn',sans-serif;font-size:1.05rem;font-weight:900;color:#ffe45c;
   background:rgba(255,214,10,.14);border:1px solid rgba(255,214,10,.55);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  box-shadow:inset 0 0 34px rgba(255,214,10,.14), 0 14px 40px rgba(0,0,0,.45);
+  box-shadow:inset 0 0 30px rgba(255,214,10,.14), 0 12px 34px rgba(0,0,0,.45);
   cursor:pointer;transition:.25s}
-.copy-all:hover{background:rgba(255,214,10,.3);color:#fff;transform:translateY(-3px);box-shadow:0 0 46px rgba(255,214,10,.45)}
-.copy-all svg{width:26px;height:26px}
+.copy-all:hover{background:rgba(255,214,10,.3);color:#fff;transform:translateY(-3px);box-shadow:0 0 40px rgba(255,214,10,.45)}
+.copy-all svg{width:22px;height:22px}
 
-.foot{text-align:center;margin-top:26px;color:var(--muted);font-size:.72rem;letter-spacing:.14em}
+.foot{text-align:center;margin-top:20px;color:var(--muted);font-size:.68rem;letter-spacing:.14em}
 .foot b{color:var(--yellow)}
 .overlay{position:fixed;inset:0;background:rgba(10,2,0,.8);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
-.modal{padding:30px;max-width:400px;width:100%;position:relative;text-align:center}
-.modal h4{letter-spacing:.2em;margin-bottom:18px;color:var(--yellow);font-family:'Oswald'}
-.modal .x{position:absolute;top:12px;left:12px;width:34px;height:34px;border-radius:10px;background:var(--glass);border:1px solid var(--stroke);color:#fff;cursor:pointer;transition:.2s}
+.modal{padding:26px;max-width:380px;width:100%;position:relative;text-align:center}
+.modal h4{letter-spacing:.2em;margin-bottom:16px;color:var(--yellow);font-family:'Oswald'}
+.modal .x{position:absolute;top:10px;left:10px;width:32px;height:32px;border-radius:10px;background:var(--glass);border:1px solid var(--stroke);color:#fff;cursor:pointer;transition:.2s}
 .modal .x:hover{background:rgba(255,59,59,.4)}
-.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(90px);
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(90px);
   background:rgba(22,7,0,.85);backdrop-filter:blur(14px);border:1px solid rgba(255,214,10,.6);
-  color:var(--yellow);padding:13px 30px;border-radius:99px;font-weight:800;font-size:.9rem;
+  color:var(--yellow);padding:11px 26px;border-radius:99px;font-weight:800;font-size:.84rem;
   z-index:2000;opacity:0;transition:.3s;box-shadow:0 0 30px rgba(255,214,10,.25)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 @media(max-width:640px){
   .stats{grid-template-columns:repeat(2,1fr)}
-  .topbar,.hero,.traffic{padding-inline:20px}
+  .topbar,.hero,.traffic{padding-inline:16px}
   .row{flex-wrap:wrap}
   .copy{width:100%}
-  .copy-all{font-size:1.1rem;padding:19px}
+  .copy-all{font-size:.95rem;padding:14px}
 }
 </style>
 </head>
@@ -160,8 +162,6 @@ body{
   </header>
 
   <section class="hero glass">
-    <div class="kicker">G O T H A M &nbsp;•&nbsp; S U N S E T &nbsp;•&nbsp; S U B S C R I P T I O N</div>
-    <h2>{{ if .subTitle }}{{ .subTitle }}{{ else }}BATMAN{{ end }}</h2>
     <div class="mail">{{ range $i, $e := .emails }}{{ if eq $i 0 }}{{ $e }}{{ end }}{{ end }}</div>
     {{ if .enabled }}
       <span class="badge">🦇 انقضا: <span class="datetime-value" data-s="{{ .expire }}">-</span></span>
@@ -224,7 +224,7 @@ body{
     <button class="x" onclick="document.getElementById('qr-modal').style.display='none'">✕</button>
     <h4>SCAN QR CODE</h4>
     <canvas id="qr-canvas" style="display:block;margin:0 auto;border-radius:14px"></canvas>
-    <p style="color:var(--muted);font-size:.78rem;margin-top:14px">با V2RayNG یا Nekobox اسکن کنید</p>
+    <p style="color:var(--muted);font-size:.76rem;margin-top:12px">با V2RayNG یا Nekobox اسکن کنید</p>
   </div>
 </div>
 
