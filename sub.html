@@ -19,7 +19,7 @@
   --frost:rgba(238,238,238,.85);
   --line:rgba(255,255,255,.28);
   --muted:rgba(255,255,255,.75);
-  --yellow:#ffd60a; --liver:#8b0f12; --green:#3ddc84;
+  --yellow:#ffd60a; --liver:#8b0f12; --green:#3ddc84; --blue:#38bdf8;
   --serif:'Playfair Display',serif;
   --lux:'Bodoni Moda',serif;
   --light:'Vazirmatn',sans-serif;
@@ -63,7 +63,6 @@ body{
 .brand h1{font-family:'Doran','Vazirmatn',sans-serif;font-size:1.35rem;font-weight:900}
 .brand small{display:block;font-family:var(--serif);font-size:.58rem;letter-spacing:.3em;color:var(--yellow);text-transform:uppercase;margin-top:2px;white-space:nowrap}
 
-/* ✅ Online بدون گلس — بزرگتر */
 .live{
   display:flex;align-items:center;gap:10px;
   font-family:var(--serif);font-size:1.1rem;letter-spacing:.15em;font-weight:600;
@@ -76,7 +75,6 @@ body{
 .live.dead i{background:#ff3b3b;box-shadow:0 0 12px #ff3b3b}
 @keyframes blinkp{0%,100%{opacity:1}50%{opacity:.25}}
 
-/* ✅ لوکیشن فارسی + گلس شفاف‌تر */
 .loc-pill{
   display:inline-flex;align-items:center;gap:10px;
   border:1px solid rgba(255,255,255,.15);border-radius:99px;padding:7px 20px;
@@ -108,7 +106,6 @@ body{
 .hero h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,6vw,2.6rem);line-height:1.15;margin:10px 0 8px;letter-spacing:.02em}
 .hero .mail{color:var(--muted);font-size:.85rem;word-break:break-all}
 .badges{margin-top:16px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-/* ✅ انقضا و آخرین اتصال: زرد و بولد */
 .badge{
   border:1px solid rgba(255,214,10,.35);border-radius:99px;padding:6px 18px;
   font-family:'Doran','Vazirmatn',sans-serif;font-size:.74rem;font-weight:900;
@@ -117,13 +114,22 @@ body{
 }
 .badge.dead{border-color:rgba(255,90,90,.5);color:#ffb0b0;text-shadow:none}
 
-/* ===== STATS ===== */
+/* ===== STATS + گراف خطی آبی ===== */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:30px}
-.tile{padding:18px 6px;text-align:center;border-inline-start:1px solid var(--line)}
+.tile{padding:18px 6px 14px;text-align:center;border-inline-start:1px solid var(--line)}
 .tile:first-child{border-inline-start:none}
-.tile b{display:block;font-family:var(--lux);font-weight:500;font-size:1.6rem;direction:ltr;margin-bottom:6px;letter-spacing:.02em}
+.tile b{display:block;font-family:var(--lux);font-weight:500;font-size:1.6rem;direction:ltr;margin-bottom:4px;letter-spacing:.02em}
 .tile span{font-size:.6rem;letter-spacing:.2em;color:var(--muted)}
 .tile.y b{color:var(--yellow)}
+.spark{width:78%;max-width:96px;height:22px;margin:2px auto 8px;display:block;overflow:visible}
+.spark .drawline{
+  stroke-dasharray:150;stroke-dashoffset:150;
+  animation:draw 1.8s ease forwards;
+  filter:drop-shadow(0 0 4px rgba(56,189,248,.65));
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+.spark .dotend{animation:dotpulse 2s infinite}
+@keyframes dotpulse{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* ===== TRAFFIC ===== */
 .traffic{margin-bottom:26px}
@@ -255,10 +261,10 @@ body{
   </section>
 
   <div class="stats">
-    <div class="tile"><b>{{ if eq .totalByte 0 }}∞{{ else }}{{ .total }}{{ end }}</b><span>حجم کل</span></div>
-    <div class="tile"><b>{{ .used }}</b><span>مصرف شده</span></div>
-    <div class="tile y"><b>{{ .remained }}</b><span>باقیمانده</span></div>
-    <div class="tile"><b>{{ .download }}</b><span>دانلود</span></div>
+    <div class="tile"><b>{{ if eq .totalByte 0 }}∞{{ else }}{{ .total }}{{ end }}</b><svg class="spark" viewBox="0 0 60 22" preserveAspectRatio="none"></svg><span>حجم کل</span></div>
+    <div class="tile"><b>{{ .used }}</b><svg class="spark" viewBox="0 0 60 22" preserveAspectRatio="none"></svg><span>مصرف شده</span></div>
+    <div class="tile y"><b>{{ .remained }}</b><svg class="spark" viewBox="0 0 60 22" preserveAspectRatio="none"></svg><span>باقیمانده</span></div>
+    <div class="tile"><b>{{ .download }}</b><svg class="spark" viewBox="0 0 60 22" preserveAspectRatio="none"></svg><span>دانلود</span></div>
   </div>
 
   <section class="traffic">
@@ -365,6 +371,27 @@ for (var i = 0; i < SEG; i++) {
   s.className = i < usedCount ? 'used' : 'rem';
   blocksEl.appendChild(s);
 }
+
+/* ✅ گراف خطی آبی داخل ۴ بخش آمار */
+document.querySelectorAll('.spark').forEach(function(sv, idx){
+  var W = 60, H = 22, n = 12;
+  var seed = (used || 42) + idx * 131 + 7;
+  var pts = [];
+  for (var i = 0; i < n; i++) {
+    seed = (seed * 9301 + 49297) % 233280;
+    var r = seed / 233280;
+    var y = H - 3 - r * (H - 6);
+    var x = i * (W / (n - 1));
+    pts.push([x, y]);
+  }
+  var d = 'M' + pts.map(function(p){ return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L');
+  var area = d + ' L' + W + ' ' + H + ' L0 ' + H + ' Z';
+  var last = pts[n - 1];
+  sv.innerHTML =
+    '<path d="' + area + '" fill="rgba(56,189,248,.14)" stroke="none"></path>' +
+    '<path class="drawline" d="' + d + '" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>' +
+    '<circle class="dotend" cx="' + last[0].toFixed(1) + '" cy="' + last[1].toFixed(1) + '" r="2.4" fill="#38bdf8"></circle>';
+});
 
 (function buildChart(){
   var svg = document.getElementById('chart-svg');
