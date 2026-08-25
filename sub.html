@@ -55,17 +55,22 @@ body{
 }
 .btn-line:hover{background:var(--white);color:var(--ink)}
 
-/* ✅ گلس زرد مخصوص کپی همه کانفیگ‌ها */
+/* ✅ کپی همه کانفیگ‌ها: داخل زرد، نوشته مشکی */
 .btn-gold{
   display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
-  background:linear-gradient(135deg, rgba(255,214,10,.22), rgba(255,214,10,.10));
-  border:1px solid rgba(255,214,10,.55); border-radius:16px;
-  padding:18px 24px; font-family:'Doran','Vazirmatn',sans-serif; font-weight:700; font-size:.95rem;
-  cursor:pointer; transition:.3s; color:var(--yellow); text-shadow:none;
-  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
-  box-shadow:0 6px 24px rgba(255,214,10,.18), inset 0 0 20px rgba(255,214,10,.08);
+  background:linear-gradient(135deg,#ffe45c,#ffd60a);
+  border:1px solid var(--yellow); border-radius:16px;
+  padding:18px 24px; font-family:'Doran','Vazirmatn',sans-serif; font-weight:900; font-size:.95rem;
+  cursor:pointer; transition:.3s; color:#0d0d0d; text-shadow:none;
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  box-shadow:0 0 28px rgba(255,214,10,.45), 0 10px 28px rgba(0,0,0,.4);
+  animation:goldpulse 2.2s infinite;
 }
-.btn-gold:hover{background:rgba(255,214,10,.35);transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,214,10,.35)}
+@keyframes goldpulse{
+  0%,100%{box-shadow:0 0 18px rgba(255,214,10,.35),0 8px 24px rgba(0,0,0,.4)}
+  50%{box-shadow:0 0 40px rgba(255,214,10,.75),0 8px 28px rgba(255,214,10,.3)}
+}
+.btn-gold:hover{background:linear-gradient(135deg,#fff08a,#ffe45c);transform:translateY(-2px)}
 
 /* ===== TOPBAR ===== */
 .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 4px 26px;flex-wrap:wrap}
@@ -118,27 +123,25 @@ body{
 .hero h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,6vw,2.6rem);line-height:1.15;margin:10px 0 8px;letter-spacing:.02em}
 .hero .mail{color:var(--muted);font-size:.85rem;word-break:break-all}
 .badges{margin-top:16px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-
-/* ✅ انقضا = سبز (قرمز وقتی تموم شد) / آخرین اتصال = سبز */
 .badge{
-  border:1px solid rgba(255,214,10,.35);border-radius:99px;padding:6px 18px;
+  border-radius:99px;padding:6px 18px;
   font-family:'Doran','Vazirmatn',sans-serif;font-size:.74rem;font-weight:900;
-  color:var(--yellow);background:rgba(0,0,0,.15);
-  text-shadow:0 0 12px rgba(255,214,10,.35);
+  background:rgba(0,0,0,.15);
 }
-.badge-expire{
-  color:var(--green);border-color:rgba(61,220,132,.45);
-  text-shadow:0 0 12px rgba(61,220,132,.45);
+/* ✅ انقضا و آخرین اتصال: داخل سبز-آبی، نوشته مشکی */
+.badge-expire,.badge-connect{
+  background:linear-gradient(135deg,#3ddc84,#38bdf8);
+  color:#0d0d0d; border:1px solid rgba(61,220,132,.6);
+  text-shadow:none;
+  box-shadow:0 0 16px rgba(56,189,248,.35);
 }
+/* وقتی سرویس تموم شد: قرمز */
 .badge-expire.expired{
-  color:#ff6b6b;border-color:rgba(255,107,107,.55);
-  text-shadow:0 0 12px rgba(255,107,107,.5);
+  background:linear-gradient(135deg,#ff6b6b,#c11a1a);
+  color:#fff; border:1px solid rgba(255,107,107,.6);
+  box-shadow:0 0 16px rgba(255,107,107,.45);
 }
-.badge-connect{
-  color:var(--green);border-color:rgba(61,220,132,.45);
-  text-shadow:0 0 12px rgba(61,220,132,.45);
-}
-.badge.dead{border-color:rgba(255,90,90,.5);color:#ffb0b0;text-shadow:none}
+.badge.dead{background:linear-gradient(135deg,#ff6b6b,#c11a1a);color:#fff;border:1px solid rgba(255,107,107,.6)}
 
 /* ===== STATS ===== */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:30px}
@@ -157,24 +160,41 @@ body{
 .spark .dotend{animation:dotpulse 2s infinite}
 @keyframes dotpulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-/* ===== TRAFFIC — نوار آبی (هم‌رنگ گراف‌ها) ===== */
+/* ===== TRAFFIC — سیک‌بار آبی NEON ===== */
 .traffic{margin-bottom:26px}
 .traffic .lbl{display:flex;justify-content:space-between;font-family:'Doran','Vazirmatn',sans-serif;font-weight:700;font-size:.72rem;color:var(--muted);margin-bottom:10px}
 .traffic .lbl b{color:var(--blue);font-weight:700}
 .traffic .lbl i{font-style:normal;color:#ff6b6b}
 .track-glass{
+  position:relative;overflow:hidden;
   padding:8px;border-radius:99px;
-  border:1px solid rgba(255,255,255,.35);
-  background:rgba(255,255,255,.08);
+  border:1px solid rgba(56,189,248,.45);
+  background:rgba(56,189,248,.08);
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  box-shadow:inset 0 0 18px rgba(255,255,255,.06), 0 6px 20px rgba(0,0,0,.25);
+  box-shadow:inset 0 0 18px rgba(56,189,248,.10), 0 0 22px rgba(56,189,248,.25), 0 6px 20px rgba(0,0,0,.25);
 }
 .blocks{display:flex;gap:0;height:10px;direction:rtl;border-radius:99px;overflow:hidden}
 .blocks span{flex:1;border-radius:0}
-/* ✅ آبی (هم‌رنگ گراف‌های آمار) */
-.blocks span.rem{background:linear-gradient(180deg,#7dd3fc,var(--blue));animation:glowp 2.4s infinite}
+.blocks span.rem{
+  background:linear-gradient(180deg,#7dd3fc,var(--blue));
+  animation:neonpulse 1.8s infinite;
+}
 .blocks span.used{background:linear-gradient(180deg,#c11a1a,var(--liver))}
-@keyframes glowp{0%,100%{box-shadow:0 0 4px rgba(56,189,248,.3)}50%{box-shadow:0 0 14px rgba(56,189,248,.75)}}
+@keyframes neonpulse{
+  0%,100%{box-shadow:0 0 4px rgba(56,189,248,.4), inset 0 0 3px rgba(255,255,255,.3)}
+  50%{box-shadow:0 0 16px rgba(56,189,248,.95), 0 0 30px rgba(56,189,248,.5), inset 0 0 6px rgba(255,255,255,.5)}
+}
+/* ✅ جاروب نئونی روی نوار */
+.neon-sweep{
+  position:absolute;top:0;bottom:0;width:38%;
+  right:-45%;
+  background:linear-gradient(90deg,transparent,rgba(125,211,252,.65),rgba(224,247,255,.95),rgba(56,189,248,.65),transparent);
+  filter:blur(2px);
+  mix-blend-mode:screen;
+  animation:sweep 2.6s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes sweep{0%{right:-45%}100%{right:108%}}
 
 /* ===== PANELS ===== */
 .panel{background:rgba(8,8,8,.30);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
@@ -302,6 +322,7 @@ body{
     </div>
     <div class="track-glass">
       <div class="blocks" id="blocks"></div>
+      <div class="neon-sweep"></div>
     </div>
   </section>
 
@@ -371,7 +392,6 @@ body{
 <script>
 var SUB_URL = "{{ .subUrl }}";
 
-/* ✅ انقضا = سبز، اگه تموم شده قرمز / آخرین اتصال = سبز */
 document.querySelectorAll('.datetime-value').forEach(function(el){
   var s = el.getAttribute('data-s'), m = el.getAttribute('data-ms');
   if (s && s !== '0' && s !== '-') {
@@ -379,7 +399,6 @@ document.querySelectorAll('.datetime-value').forEach(function(el){
     var now = new Date();
     var expired = d < now;
     el.textContent = d.toLocaleDateString('fa-IR') + ' ' + d.toLocaleTimeString('fa-IR', {hour:'2-digit', minute:'2-digit'});
-    /* تغییر رنگ بج انقضا بعد از نمایش تاریخ */
     var eb = document.getElementById('expire-badge');
     if (eb && expired) eb.classList.add('expired');
   } else if (m && m !== '0') {
@@ -470,7 +489,6 @@ document.querySelectorAll('.spark').forEach(function(sv, idx){
 
   svg.innerHTML = html;
 
-  /* ✅ نام روزهای هفته فارسی: امروز، دیروز، دوشنبه، ... */
   var dayNamesFA = ['یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنج‌شنبه','جمعه','شنبه'];
   var today = new Date().getDay();
   var names = [];
