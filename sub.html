@@ -55,6 +55,18 @@ body{
 }
 .btn-line:hover{background:var(--white);color:var(--ink)}
 
+/* ✅ گلس زرد مخصوص کپی همه کانفیگ‌ها */
+.btn-gold{
+  display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+  background:linear-gradient(135deg, rgba(255,214,10,.22), rgba(255,214,10,.10));
+  border:1px solid rgba(255,214,10,.55); border-radius:16px;
+  padding:18px 24px; font-family:'Doran','Vazirmatn',sans-serif; font-weight:700; font-size:.95rem;
+  cursor:pointer; transition:.3s; color:var(--yellow); text-shadow:none;
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  box-shadow:0 6px 24px rgba(255,214,10,.18), inset 0 0 20px rgba(255,214,10,.08);
+}
+.btn-gold:hover{background:rgba(255,214,10,.35);transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,214,10,.35)}
+
 /* ===== TOPBAR ===== */
 .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 4px 26px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:12px}
@@ -106,15 +118,29 @@ body{
 .hero h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,6vw,2.6rem);line-height:1.15;margin:10px 0 8px;letter-spacing:.02em}
 .hero .mail{color:var(--muted);font-size:.85rem;word-break:break-all}
 .badges{margin-top:16px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+
+/* ✅ انقضا = سبز (قرمز وقتی تموم شد) / آخرین اتصال = سبز */
 .badge{
   border:1px solid rgba(255,214,10,.35);border-radius:99px;padding:6px 18px;
   font-family:'Doran','Vazirmatn',sans-serif;font-size:.74rem;font-weight:900;
   color:var(--yellow);background:rgba(0,0,0,.15);
   text-shadow:0 0 12px rgba(255,214,10,.35);
 }
+.badge-expire{
+  color:var(--green);border-color:rgba(61,220,132,.45);
+  text-shadow:0 0 12px rgba(61,220,132,.45);
+}
+.badge-expire.expired{
+  color:#ff6b6b;border-color:rgba(255,107,107,.55);
+  text-shadow:0 0 12px rgba(255,107,107,.5);
+}
+.badge-connect{
+  color:var(--green);border-color:rgba(61,220,132,.45);
+  text-shadow:0 0 12px rgba(61,220,132,.45);
+}
 .badge.dead{border-color:rgba(255,90,90,.5);color:#ffb0b0;text-shadow:none}
 
-/* ===== STATS + گراف خطی آبی ===== */
+/* ===== STATS ===== */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:30px}
 .tile{padding:18px 6px 14px;text-align:center;border-inline-start:1px solid var(--line)}
 .tile:first-child{border-inline-start:none}
@@ -131,10 +157,10 @@ body{
 .spark .dotend{animation:dotpulse 2s infinite}
 @keyframes dotpulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-/* ===== TRAFFIC ===== */
+/* ===== TRAFFIC — نوار آبی (هم‌رنگ گراف‌ها) ===== */
 .traffic{margin-bottom:26px}
 .traffic .lbl{display:flex;justify-content:space-between;font-family:'Doran','Vazirmatn',sans-serif;font-weight:700;font-size:.72rem;color:var(--muted);margin-bottom:10px}
-.traffic .lbl b{color:var(--yellow);font-weight:700}
+.traffic .lbl b{color:var(--blue);font-weight:700}
 .traffic .lbl i{font-style:normal;color:#ff6b6b}
 .track-glass{
   padding:8px;border-radius:99px;
@@ -145,9 +171,10 @@ body{
 }
 .blocks{display:flex;gap:0;height:10px;direction:rtl;border-radius:99px;overflow:hidden}
 .blocks span{flex:1;border-radius:0}
-.blocks span.rem{background:linear-gradient(180deg,#ffe45c,var(--yellow));animation:glowp 2.4s infinite}
+/* ✅ آبی (هم‌رنگ گراف‌های آمار) */
+.blocks span.rem{background:linear-gradient(180deg,#7dd3fc,var(--blue));animation:glowp 2.4s infinite}
 .blocks span.used{background:linear-gradient(180deg,#c11a1a,var(--liver))}
-@keyframes glowp{0%,100%{box-shadow:0 0 4px rgba(255,214,10,.3)}50%{box-shadow:0 0 12px rgba(255,214,10,.7)}}
+@keyframes glowp{0%,100%{box-shadow:0 0 4px rgba(56,189,248,.3)}50%{box-shadow:0 0 14px rgba(56,189,248,.75)}}
 
 /* ===== PANELS ===== */
 .panel{background:rgba(8,8,8,.30);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
@@ -157,7 +184,7 @@ body{
 
 .chart{position:relative;width:100%;height:120px}
 .chart svg{width:100%;height:100%;overflow:visible}
-.chart-axis{display:flex;justify-content:space-between;margin-top:8px;font-size:.52rem;font-family:var(--serif);color:var(--muted);direction:ltr;letter-spacing:.08em}
+.chart-axis{display:flex;justify-content:space-between;margin-top:8px;font-size:.54rem;font-family:'Doran','Vazirmatn',sans-serif;font-weight:700;color:var(--muted);direction:rtl;letter-spacing:0}
 .chart-axis span{flex:1;text-align:center}
 .chart-legend{display:flex;justify-content:center;gap:18px;margin-top:12px;font-size:.66rem;color:var(--muted)}
 .chart-legend .dot{display:inline-block;width:9px;height:9px;border-radius:99px;vertical-align:middle;margin-left:6px}
@@ -212,10 +239,11 @@ body{
   .tile:nth-child(3){border-inline-start:none}
   .tile{border-top:1px solid var(--line)}
   .tile:nth-child(-n+2){border-top:none}
-  .btn-solid,.btn-line{padding:15px 20px;font-size:.86rem}
+  .btn-solid,.btn-line,.btn-gold{padding:15px 20px;font-size:.86rem}
   .brand h1{font-size:1.2rem}
   .live{font-size:.95rem}
   .live i{width:12px;height:12px}
+  .chart-axis{font-size:.48rem}
 }
 </style>
 </head>
@@ -252,11 +280,11 @@ body{
     <div class="mail">{{ range $i, $e := .emails }}{{ if eq $i 0 }}{{ $e }}{{ end }}{{ end }}</div>
     <div class="badges">
       {{ if .enabled }}
-        <span class="badge">انقضا: <span class="datetime-value" data-s="{{ .expire }}">-</span></span>
+        <span class="badge badge-expire" id="expire-badge">انقضا: <span class="datetime-value" data-s="{{ .expire }}">-</span></span>
       {{ else }}
-        <span class="badge dead">اشتراک غیرفعال</span>
+        <span class="badge badge-expire expired">انقضا: منقضی شده</span>
       {{ end }}
-      <span class="badge">آخرین اتصال: <span class="datetime-value" data-ms="{{ .lastOnline }}">-</span></span>
+      <span class="badge badge-connect">آخرین اتصال: <span class="datetime-value" data-ms="{{ .lastOnline }}">-</span></span>
     </div>
   </section>
 
@@ -277,7 +305,7 @@ body{
     </div>
   </section>
 
-  <button class="btn-solid" id="copy-all">کپی همه کانفیگ‌ها</button>
+  <button class="btn-gold" id="copy-all">کپی همه کانفیگ‌ها</button>
 
   <section class="panel" style="margin-top:26px">
     <div class="panel-title">نمودار مصرف روزانه</div>
@@ -343,11 +371,17 @@ body{
 <script>
 var SUB_URL = "{{ .subUrl }}";
 
+/* ✅ انقضا = سبز، اگه تموم شده قرمز / آخرین اتصال = سبز */
 document.querySelectorAll('.datetime-value').forEach(function(el){
   var s = el.getAttribute('data-s'), m = el.getAttribute('data-ms');
   if (s && s !== '0' && s !== '-') {
     var d = new Date(parseInt(s) * 1000);
+    var now = new Date();
+    var expired = d < now;
     el.textContent = d.toLocaleDateString('fa-IR') + ' ' + d.toLocaleTimeString('fa-IR', {hour:'2-digit', minute:'2-digit'});
+    /* تغییر رنگ بج انقضا بعد از نمایش تاریخ */
+    var eb = document.getElementById('expire-badge');
+    if (eb && expired) eb.classList.add('expired');
   } else if (m && m !== '0') {
     var dt = new Date(parseInt(m)), min = Math.floor((Date.now() - dt) / 60000);
     if (min < 1) el.textContent = 'همین الان';
@@ -372,7 +406,6 @@ for (var i = 0; i < SEG; i++) {
   blocksEl.appendChild(s);
 }
 
-/* ✅ گراف خطی آبی داخل ۴ بخش آمار */
 document.querySelectorAll('.spark').forEach(function(sv, idx){
   var W = 60, H = 22, n = 12;
   var seed = (used || 42) + idx * 131 + 7;
@@ -437,10 +470,19 @@ document.querySelectorAll('.spark').forEach(function(sv, idx){
 
   svg.innerHTML = html;
 
-  var dayNames = ['6 DAYS','5 DAYS','4 DAYS','3 DAYS','2 DAYS','YESTERDAY','TODAY'];
+  /* ✅ نام روزهای هفته فارسی: امروز، دیروز، دوشنبه، ... */
+  var dayNamesFA = ['یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنج‌شنبه','جمعه','شنبه'];
+  var today = new Date().getDay();
+  var names = [];
+  for (var i = 6; i >= 0; i--) {
+    var d = (today - i + 7) % 7;
+    if (i === 0) names.push('امروز');
+    else if (i === 1) names.push('دیروز');
+    else names.push(dayNamesFA[d]);
+  }
   for (var k = 0; k < days; k++) {
     var sp = document.createElement('span');
-    sp.textContent = dayNames[k];
+    sp.textContent = names[k];
     axis.appendChild(sp);
   }
 })();
