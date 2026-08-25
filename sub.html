@@ -15,8 +15,8 @@
   font-weight:100 900; font-style:normal; font-display:swap;
 }
 :root{
-  --yellow:#ffd60a; --amber:#ffb703; --green:#3ddc84; --liver:#8b0f12;
-  --glass:rgba(255,255,255,.10); --glass-dark:rgba(22,7,0,.48);
+  --yellow:#ffd60a; --amber:#ffb703; --green:#3ddc84; --liver:#8b0f12; --red:#ff2a2a;
+  --glass:rgba(255,255,255,.06); --glass-dark:rgba(22,7,0,.48);
   --stroke:rgba(255,255,255,.22); --text:#ffffff; --muted:rgba(255,255,255,.68);
   --en:'Space Grotesk',sans-serif;
 }
@@ -42,17 +42,18 @@ body{
 }
 .gbtn{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  background:var(--glass); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  background:var(--glass); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
   border:1px solid var(--stroke); border-radius:11px; color:#fff;
   padding:9px 14px; font-family:'Doran','Vazirmatn',sans-serif; font-weight:700; font-size:.78rem;
   cursor:pointer; transition:.25s; text-decoration:none;
-  animation:btnpulse 2.8s infinite;
+  animation:btnpulse 2.4s infinite;
 }
+/* هاله قرمز → سیاه (خاموش/روشن) */
 @keyframes btnpulse{
-  0%,100%{box-shadow:0 0 0 1px rgba(255,214,10,.15), 0 4px 14px rgba(0,0,0,.3)}
-  50%{box-shadow:0 0 0 1px rgba(255,214,10,.45), 0 4px 22px rgba(255,214,10,.25)}
+  0%,100%{box-shadow:0 0 0 1px rgba(255,42,42,.55), 0 0 16px rgba(255,42,42,.4), 0 4px 14px rgba(0,0,0,.3)}
+  50%{box-shadow:0 0 0 1px rgba(0,0,0,.75), 0 0 2px rgba(0,0,0,.25), 0 4px 10px rgba(0,0,0,.3)}
 }
-.gbtn:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
+.gbtn:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
 
 .loc-wrap{display:flex;justify-content:center;margin-bottom:12px}
 .loc-pill{display:inline-flex;align-items:center;gap:9px;padding:6px 18px;border-radius:99px;font-size:.72rem;color:#fff;animation:locpulse 3s infinite}
@@ -106,7 +107,7 @@ body{
 .hero .mail{color:var(--muted);font-size:.82rem;word-break:break-all}
 
 .badge{display:inline-flex;align-items:center;gap:5px;margin-top:8px;margin-left:6px;
-  background:var(--glass);backdrop-filter:blur(10px);
+  background:var(--glass);backdrop-filter:blur(8px);
   border:1px solid var(--stroke);border-radius:8px;padding:3px 10px;font-size:.68rem;font-weight:700;line-height:1.2}
 .badge.dead{border-color:rgba(255,59,59,.6);color:#ff9090}
 
@@ -134,12 +135,11 @@ body{
   display:flex;align-items:center;justify-content:center;gap:10px;
   font-family:'Doran','Vazirmatn',sans-serif;font-size:1rem;font-weight:900;
   color:#0d0d0d;background:var(--yellow);border:1px solid var(--yellow);
-  box-shadow:0 0 28px rgba(255,214,10,.45), 0 10px 28px rgba(0,0,0,.4);
   cursor:pointer;transition:.25s;animation:copyallpulse 2.2s infinite;
 }
 @keyframes copyallpulse{
-  0%,100%{box-shadow:0 0 20px rgba(255,214,10,.35),0 8px 24px rgba(0,0,0,.4)}
-  50%{box-shadow:0 0 40px rgba(255,214,10,.75),0 8px 28px rgba(255,214,10,.3)}
+  0%,100%{box-shadow:0 0 20px rgba(255,42,42,.55), 0 8px 24px rgba(0,0,0,.4)}
+  50%{box-shadow:0 0 4px rgba(0,0,0,.7), 0 8px 20px rgba(0,0,0,.4)}
 }
 .copy-all:hover{background:#ffe45c;color:#000;transform:translateY(-3px)}
 .copy-all svg{width:22px;height:22px}
@@ -174,14 +174,14 @@ body{
 .meta{flex:1;min-width:0}
 .meta .name{font-weight:700;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .meta .proto{font-family:var(--en);font-size:.6rem;letter-spacing:.28em;color:var(--muted);font-weight:500}
-.copy{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--stroke);
+.copy{background:var(--glass);backdrop-filter:blur(8px);border:1px solid var(--stroke);
   border-radius:10px;color:#fff;padding:7px 14px;font-family:'Doran','Vazirmatn',sans-serif;
   font-weight:700;font-size:.72rem;cursor:pointer;transition:.2s;flex-shrink:0;
   animation:btncopypulse 2.4s infinite;
 }
 @keyframes btncopypulse{
-  0%,100%{box-shadow:0 0 0 1px rgba(255,214,10,.15)}
-  50%{box-shadow:0 0 0 1px rgba(255,214,10,.5),0 0 12px rgba(255,214,10,.25)}
+  0%,100%{box-shadow:0 0 0 1px rgba(255,42,42,.5), 0 0 12px rgba(255,42,42,.35)}
+  50%{box-shadow:0 0 0 1px rgba(0,0,0,.7), 0 0 2px rgba(0,0,0,.2)}
 }
 .copy:hover{background:rgba(255,214,10,.25);border-color:rgba(255,214,10,.6);color:var(--yellow)}
 .empty{padding:24px;text-align:center;color:var(--muted)}
