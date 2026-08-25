@@ -1,344 +1,635 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>کمپانی سایبری پهلوان | Gotham Sunset</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Vazirmatn:wght@700&display=swap" rel="stylesheet">
-<style>
-@import url('https://v1.fontapi.ir/css/Doran');
-@font-face{
-  font-family:'Doran';
-  src:url('https://raw.githubusercontent.com/parhampahlevann/sub/main/fonts/doran-bold.woff2') format('woff2'),
-      url('https://raw.githubusercontent.com/parhampahlevann/sub/main/fonts/doran-bold.ttf') format('truetype');
-  font-weight:100 900; font-style:normal; font-display:swap;
-}
-:root{
-  --yellow:#ffd60a; --amber:#ffb703; --green:#3ddc84; --liver:#8b0f12;
-  --glass:rgba(255,255,255,.10); --glass-dark:rgba(22,7,0,.48);
-  --stroke:rgba(255,255,255,.22); --text:#ffffff; --muted:rgba(255,255,255,.68);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  min-height:100vh; color:var(--text);
-  font-family:'Doran','Vazirmatn',sans-serif; font-weight:700;
-  background:
-    linear-gradient(180deg, rgba(25,6,0,.30), rgba(12,2,0,.74)),
-    url('https://raw.githubusercontent.com/parhampahlevann/sub/main/bg.jpg') center 22%/cover fixed no-repeat;
-  background-color:#8a3a00;
-  padding:16px 12px 50px; overflow-x:hidden;
-}
-.wrap{max-width:880px;margin:0 auto;position:relative;z-index:1}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل کاربری</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.glass{
-  background:var(--glass-dark);
-  backdrop-filter:blur(18px) saturate(140%);
-  -webkit-backdrop-filter:blur(18px) saturate(140%);
-  border:1px solid var(--stroke); border-radius:18px;
-  box-shadow:0 18px 50px rgba(0,0,0,.5);
-}
-.gbtn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  background:var(--glass); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-  border:1px solid var(--stroke); border-radius:11px; color:#fff;
-  padding:9px 14px; font-family:'Doran','Vazirmatn',sans-serif; font-weight:700; font-size:.78rem;
-  cursor:pointer; transition:.25s; text-decoration:none;
-}
-.gbtn:hover{background:rgba(255,255,255,.22);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.4)}
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: #0a0a1a;
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
 
-/* 🇩 بج لوکیشن بالای صفحه */
-.loc-wrap{display:flex;justify-content:center;margin-bottom:12px}
-.loc-pill{
-  display:inline-flex;align-items:center;gap:9px;padding:6px 18px;border-radius:99px;
-  font-size:.72rem;color:#fff;
-}
-.flag-de{
-  width:15px;height:15px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(180deg,#000 0 33.3%,#dd0000 33.3% 66.6%,#ffce00 66.6% 100%);
-  box-shadow:0 0 0 2px rgba(255,255,255,.18), 0 0 10px rgba(255,206,0,.45);
-  animation:flagpulse 2.6s infinite;
-}
-@keyframes flagpulse{0%,100%{box-shadow:0 0 0 2px rgba(255,255,255,.18),0 0 6px rgba(255,206,0,.3)}50%{box-shadow:0 0 0 2px rgba(255,255,255,.28),0 0 14px rgba(255,206,0,.7)}}
+        .en-font {
+            font-family: 'Poppins', sans-serif;
+        }
 
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;margin-bottom:16px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px}
-.brand svg{width:38px;fill:var(--yellow);filter:drop-shadow(0 0 10px rgba(255,214,10,.55))}
-.brand h1{font-size:1.1rem;font-weight:900}
-.brand small{display:block;font-family:'Oswald';font-size:.58rem;letter-spacing:.3em;color:var(--yellow);font-weight:600;text-shadow:0 0 12px rgba(255,214,10,.4)}
-.live{display:flex;align-items:center;gap:7px;font-size:.76rem;color:var(--muted)}
-.live i{width:9px;height:9px;border-radius:50%}
-.live.on{color:var(--green)}
-.live.on i{background:var(--green);box-shadow:0 0 12px var(--green);animation:blink 1.6s infinite}
-.live.off{color:var(--green)}
-.live.off i{background:var(--green);box-shadow:0 0 10px var(--green)}
-.live.dead{color:#ff8080}
-.live.dead i{background:#ff3b3b;box-shadow:0 0 12px #ff3b3b}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+        .container {
+            max-width: 420px;
+            margin: 0 auto;
+        }
 
-.hero{padding:20px 22px 18px;margin-bottom:16px;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(circle at 85% 15%, rgba(255,183,3,.14), transparent 55%)}
-.hero .mail{color:var(--muted);font-size:.82rem;word-break:break-all}
-.badge{display:inline-flex;align-items:center;gap:7px;margin-top:10px;margin-left:8px;
-  background:var(--glass);backdrop-filter:blur(10px);
-  border:1px solid var(--stroke);border-radius:99px;padding:5px 14px;font-size:.74rem;font-weight:700}
-.badge.dead{border-color:rgba(255,59,59,.6);color:#ff9090}
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
 
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
-.tile{padding:12px 8px;text-align:center}
-.tile b{display:block;font-family:'Oswald';font-weight:600;font-size:1.05rem;direction:ltr;margin-bottom:4px}
-.tile span{font-size:.62rem;letter-spacing:.18em;color:var(--muted)}
-.tile.y b{color:var(--yellow);text-shadow:0 0 16px rgba(255,214,10,.55)}
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
 
-/* 🟥 سیک‌بار بلوکی */
-.traffic{padding:16px 20px;margin-bottom:16px}
-.traffic .lbl{display:flex;justify-content:space-between;font-size:.76rem;color:var(--muted);margin-bottom:12px}
-.traffic .lbl b{color:var(--yellow)}
-.traffic .lbl i{font-style:normal;color:#ff5252}
-.blocks{display:flex;gap:3px;height:18px;direction:rtl}
-.blocks span{flex:1;border-radius:3px}
-.blocks span.rem{
-  background:linear-gradient(180deg,#ffe45c,#ffd60a);
-  animation:glowp 2.4s infinite;
-}
-.blocks span.used{
-  background:linear-gradient(180deg,#a11212,var(--liver));
-  box-shadow:inset 0 0 6px rgba(0,0,0,.65);
-}
-@keyframes glowp{0%,100%{box-shadow:0 0 5px rgba(255,214,10,.3)}50%{box-shadow:0 0 14px rgba(255,214,10,.75)}}
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-.sec{display:flex;align-items:center;gap:10px;margin:0 4px 10px}
-.sec h3{font-size:.95rem;font-weight:900}
-.sec .line{flex:1;height:1px;background:linear-gradient(90deg,var(--stroke),transparent)}
-.card-block{padding:8px;margin-bottom:16px}
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
 
-.configs{counter-reset:cfg}
-.row{counter-increment:cfg;display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:13px;transition:.2s}
-.row + .row{margin-top:6px}
-.row:hover{background:rgba(255,255,255,.07)}
-.idx{font-family:'Oswald';font-size:.95rem;color:var(--amber);min-width:30px;text-align:center;font-weight:600}
-.idx::before{content:counter(cfg,decimal-leading-zero)}
-.meta{flex:1;min-width:0}
-.meta .name{font-weight:700;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.meta .proto{font-family:'Oswald';font-size:.58rem;letter-spacing:.3em;color:var(--muted);font-weight:500}
-.copy{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--stroke);
-  border-radius:10px;color:#fff;padding:7px 14px;font-family:'Doran','Vazirmatn',sans-serif;
-  font-weight:700;font-size:.72rem;cursor:pointer;transition:.2s;flex-shrink:0}
-.copy:hover{background:rgba(255,214,10,.25);border-color:rgba(255,214,10,.6);color:var(--yellow)}
-.empty{padding:24px;text-align:center;color:var(--muted)}
+        .user-name {
+            font-size: 16px;
+            font-weight: 700;
+        }
 
-/* دکمه‌ها زیر هم با فاصله بیشتر — بدون کارت شیشه‌ای تا بتمن بیشتر دیده شود */
-.actions{display:flex;flex-direction:column;gap:16px;margin-bottom:18px}
-.actions .gbtn{width:100%;padding:10px 16px}
+        .user-id {
+            font-size: 12px;
+            color: #888;
+            font-family: 'Poppins', sans-serif;
+        }
 
-/* 🟡 دکمه کپی همه: زرد با نوشته مشکی */
-.copy-all{width:100%;margin-top:2px;padding:16px;border-radius:16px;
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  font-family:'Doran','Vazirmatn',sans-serif;font-size:1.05rem;font-weight:900;
-  color:#0d0d0d;background:var(--yellow);border:1px solid var(--yellow);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  box-shadow:0 0 34px rgba(255,214,10,.45), 0 12px 34px rgba(0,0,0,.45);
-  cursor:pointer;transition:.25s}
-.copy-all:hover{background:#ffe45c;color:#000;transform:translateY(-3px);box-shadow:0 0 50px rgba(255,214,10,.65)}
-.copy-all svg{width:22px;height:22px}
+        /* ===== SUPPORT BUTTON IN HEADER ===== */
+        .support-btn-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+            width: 100%;
+            justify-content: center;
+            margin-top: 12px;
+        }
 
-.foot{text-align:center;margin-top:20px;color:var(--yellow);font-size:.74rem;letter-spacing:.12em;text-shadow:0 0 12px rgba(255,214,10,.4)}
-.foot b{color:var(--yellow)}
-.overlay{position:fixed;inset:0;background:rgba(10,2,0,.8);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
-.modal{padding:26px;max-width:380px;width:100%;position:relative;text-align:center}
-.modal h4{letter-spacing:.2em;margin-bottom:16px;color:var(--yellow);font-family:'Oswald'}
-.modal .x{position:absolute;top:10px;left:10px;width:32px;height:32px;border-radius:10px;background:var(--glass);border:1px solid var(--stroke);color:#fff;cursor:pointer;transition:.2s}
-.modal .x:hover{background:rgba(255,59,59,.4)}
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(90px);
-  background:rgba(22,7,0,.85);backdrop-filter:blur(14px);border:1px solid rgba(255,214,10,.6);
-  color:var(--yellow);padding:11px 26px;border-radius:99px;font-weight:800;font-size:.84rem;
-  z-index:2000;opacity:0;transition:.3s;box-shadow:0 0 30px rgba(255,214,10,.25)}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+        .support-btn-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.5);
+        }
 
-@media(max-width:640px){
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .topbar,.hero,.traffic{padding-inline:16px}
-  .row{flex-wrap:wrap}
-  .copy{width:100%}
-  .copy-all{font-size:.95rem;padding:14px}
-}
-</style>
+        .support-btn-header svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .support-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            margin-top: 6px;
+            direction: ltr;
+        }
+
+        /* ===== STATUS CARD ===== */
+        .status-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .status-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .status-label {
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        .status-value {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .online-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #00e676;
+        }
+
+        .online-dot {
+            width: 10px;
+            height: 10px;
+            background: #00e676;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+            box-shadow: 0 0 8px #00e676;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* ===== EXPIRY PILL ===== */
+        .expiry-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 107, 107, 0.15);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #ff6b6b;
+            font-weight: 500;
+        }
+
+        .expiry-pill svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* ===== TRAFFIC INFO ===== */
+        .traffic-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .traffic-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 10px;
+            width: 65%;
+            transition: width 1s ease;
+        }
+
+        .traffic-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* ===== DAILY USAGE CHART ===== */
+        .chart-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .chart-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chart-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 120px;
+            padding: 0 8px;
+            gap: 6px;
+        }
+
+        .chart-bar-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            flex: 1;
+        }
+
+        .chart-bar {
+            width: 100%;
+            max-width: 30px;
+            border-radius: 6px 6px 2px 2px;
+            background: linear-gradient(180deg, #00cec9, #00b894);
+            transition: height 1s ease;
+            min-height: 8px;
+            position: relative;
+        }
+
+        .chart-bar.today {
+            background: linear-gradient(180deg, #fdcb6e, #e17055);
+            box-shadow: 0 0 12px rgba(225, 112, 85, 0.4);
+        }
+
+        .chart-bar-value {
+            font-size: 9px;
+            font-family: 'Poppins', sans-serif;
+            color: #aaa;
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        .chart-day {
+            font-size: 10px;
+            color: #666;
+        }
+
+        .chart-day.today {
+            color: #e17055;
+            font-weight: 700;
+        }
+
+        /* ===== CONFIG BUTTONS ===== */
+        .config-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .config-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .config-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+        }
+
+        .config-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: #ddd;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .copy-btn.copied {
+            background: linear-gradient(135deg, #00b894, #00cec9);
+        }
+
+        /* ===== SUPPORT BUTTON (Bottom) ===== */
+        .support-section {
+            margin-top: 16px;
+        }
+
+        .support-btn-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            color: #fff;
+            padding: 14px 20px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 184, 148, 0.3);
+            width: 100%;
+        }
+
+        .support-btn-bottom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 184, 148, 0.5);
+        }
+
+        .support-btn-bottom svg {
+            width: 20px;
+            height: 20px;
+            animation: ring 2s infinite;
+        }
+
+        @keyframes ring {
+            0%, 100% { transform: rotate(0deg); }
+            10% { transform: rotate(15deg); }
+            20% { transform: rotate(-10deg); }
+            30% { transform: rotate(10deg); }
+            40% { transform: rotate(-5deg); }
+            50% { transform: rotate(0deg); }
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1a1a2e;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 13px;
+            border: 1px solid rgba(0, 184, 148, 0.3);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            transition: transform 0.4s ease;
+            z-index: 999;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
 </head>
 <body>
-<div class="wrap">
 
-  <div class="loc-wrap">
-    <span class="loc-pill glass">
-      <span class="flag-de"></span>
-      لوکیشن: آیپی ثابت کشور آلمان
-    </span>
-  </div>
+<div class="container">
 
-  <header class="topbar glass">
-    <div class="brand">
-      <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg"><path d="M100 32 L95 10 L90 26 C78 28 66 31 56 35 C38 41 20 44 4 52 C14 54 21 60 24 68 C31 63 39 64 45 70 C51 65 59 67 64 76 C71 71 79 75 83 85 C89 80 95 85 100 96 C105 85 111 80 117 85 C121 75 129 71 136 76 C141 67 149 65 155 70 C161 64 169 63 176 68 C179 60 186 54 196 52 C180 44 162 41 144 35 C134 31 122 28 110 26 L105 10 L100 32 Z"/></svg>
-      <div>
-        <h1>کمپانی سایبری پهلوان</h1>
-        <small>Pahlevan COMPANY Security Services</small>
-      </div>
+    <!-- HEADER WITH SUPPORT BUTTON -->
+    <div class="header">
+        <div class="header-top">
+            <div class="user-info">
+                <div class="avatar">👤</div>
+                <div>
+                    <div class="user-name">کاربر عزیز</div>
+                    <div class="user-id">ID: User_2847</div>
+                </div>
+            </div>
+            <div class="expiry-pill">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                ۱۴ روز مانده
+            </div>
+        </div>
+
+        <!-- SUPPORT BUTTON IN HEADER -->
+        <a href="tel:+989391268620" class="support-btn-header">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            تماس مستقیم با پشتیبانی
+        </a>
+        <div class="support-number en-font">+98 939 126 8620</div>
     </div>
-    {{ if .enabled }}
-      {{ if .isOnline }}<div class="live on"><i></i>آنلاین</div>
-      {{ else }}<div class="live off"><i></i>فعال</div>{{ end }}
-    {{ else }}<div class="live dead"><i></i>غیرفعال</div>{{ end }}
-  </header>
 
-  <section class="hero glass">
-    <div class="mail">{{ range $i, $e := .emails }}{{ if eq $i 0 }}{{ $e }}{{ end }}{{ end }}</div>
-    {{ if .enabled }}
-      <span class="badge">🦇 انقضا: <span class="datetime-value" data-s="{{ .expire }}">-</span></span>
-    {{ else }}
-      <span class="badge dead">⛔ اشتراک غیرفعال است</span>
-    {{ end }}
-    <span class="badge">🕐 آخرین اتصال: <span class="datetime-value" data-ms="{{ .lastOnline }}">-</span></span>
-  </section>
-
-  <div class="stats">
-    <div class="tile glass"><b>{{ if eq .totalByte 0 }}∞{{ else }}{{ .total }}{{ end }}</b><span>حجم کل</span></div>
-    <div class="tile glass"><b>{{ .used }}</b><span>مصرف شده</span></div>
-    <div class="tile glass y"><b>{{ .remained }}</b><span>باقیمانده</span></div>
-    <div class="tile glass"><b>{{ .download }}</b><span>دانلود</span></div>
-  </div>
-
-  <section class="traffic glass">
-    <div class="lbl">
-      <span>باقیمانده: <b>{{ .remained }}</b></span>
-      <span>مصرف شده: <i>{{ .used }}</i></span>
+    <!-- STATUS CARD -->
+    <div class="status-card">
+        <div class="status-row">
+            <span class="status-label">وضعیت اتصال</span>
+            <span class="online-badge">
+                <span class="online-dot"></span>
+                Online
+            </span>
+        </div>
+        <div class="status-row">
+            <span class="status-label">سرور فعال</span>
+            <span class="status-value en-font">Config-IR-1</span>
+        </div>
+        <div class="status-row">
+            <span class="status-label">پروتکل</span>
+            <span class="status-value en-font">VLESS + WebSocket</span>
+        </div>
+        <div class="status-row">
+            <span class="status-label">پینگ</span>
+            <span class="status-value en-font" style="color: #00e676;">45ms</span>
+        </div>
     </div>
-    <div class="blocks" id="blocks"></div>
-  </section>
 
-  {{ if .announce }}<section class="traffic glass" style="border-inline-start:4px solid var(--yellow)">📢 {{ .announce }}</section>{{ end }}
-
-  <div class="sec"><h3>🦇 کانفیگ‌های شما</h3><span class="line"></span></div>
-  <section class="card-block glass configs">
-    {{ range $i, $link := .links }}
-    <div class="row">
-      <div class="idx"></div>
-      <div class="meta">
-        <div class="name">{{ index $.emails $i }}</div>
-        <div class="proto" data-proto="{{ $link }}">PROTOCOL</div>
-      </div>
-      <button class="copy config-copy" data-link="{{ $link }}">کپی</button>
+    <!-- TRAFFIC CARD -->
+    <div class="traffic-card">
+        <div class="traffic-title">
+            📊 ترافیک باقی‌مانده
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        <div class="traffic-info">
+            <span>۳۵ گیگ از ۱۰۰ گیگ استفاده شده</span>
+            <span class="en-font" style="color: #667eea;">65%</span>
+        </div>
     </div>
-    {{ else }}
-    <div class="empty">هیچ کانفیگی یافت نشد.</div>
-    {{ end }}
-  </section>
 
-  <div class="sec"><h3>⚡ دسترسی سریع</h3><span class="line"></span></div>
-  <section class="actions">
-    <button class="gbtn" data-link="{{ .subUrl }}">کپی لینک اشتراک</button>
-    <a class="gbtn" href="v2rayng://install-sub?url={{ .subUrl }}&name=PahlevanCyber">افزودن به V2RayNG</a>
-    <button class="gbtn" onclick="openQR()">نمایش QR Code</button>
-    <a class="gbtn" href="{{ .subClashUrl }}">خروجی Clash</a>
-    <a class="gbtn" href="{{ .subJsonUrl }}">خروجی JSON</a>
-    {{ if .subSupportUrl }}<a class="gbtn" href="{{ .subSupportUrl }}" target="_blank">پشتیبانی</a>{{ end }}
-  </section>
+    <!-- DAILY USAGE CHART -->
+    <div class="chart-card">
+        <div class="chart-title">
+            📈 نمودار مصرف روزانه
+        </div>
+        <div class="chart-container">
+            <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="height: 40px;">
+                    <span class="chart-bar-value">2.1G</span>
+                </div>
+                <span class="chart-day">شنبه</span>
+            </div>
+            <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="height: 65px;">
+                    <span class="chart-bar-value">3.4G</span>
+                </div>
+                <span class="chart-day">یکشنبه</span>
+            </div>
+            <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="height: 50px;">
+                    <span class="chart-bar-value">2.6G</span>
+                </div>
+                <span class="chart-day">دوشنبه</span>
+            </div>
+            <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="height: 80px;">
+                    <span class="chart-bar-value">4.2G</span>
+                </div>
+                <span class="chart-day">سه‌شنبه</span>
+            </div>
+            <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="height: 55px;">
+                    <span class="chart-bar-value">2.8G</span>
+                </div>
+                <span class="chart-day">چهارشنبه</span>
+            </div>
+            <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="height: 70px;">
+                    <span class="chart-bar-value">3.7G</span>
+                </div>
+                <span class="chart-day">پنج‌شنبه</span>
+            </div>
+            <div class="chart-bar-wrapper">
+                <div class="chart-bar today" style="height: 90px;">
+                    <span class="chart-bar-value">4.8G</span>
+                </div>
+                <span class="chart-day today">امروز</span>
+            </div>
+        </div>
+    </div>
 
-  <button class="copy-all" id="copy-all">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-    کپی همه کانفیگ‌ها
-  </button>
+    <!-- CONFIG SECTION -->
+    <div class="config-card">
+        <div class="config-title">🔗 کانفیگ‌های شما</div>
 
-  <div class="foot">🦇 Create By <b>Parham Pahlevan</b></div>
+        <div class="config-item">
+            <span class="config-name">Config-IR-1</span>
+            <button class="copy-btn" onclick="copyConfig(this, 'vless://example-config-1')">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+                کپی
+            </button>
+        </div>
+
+        <div class="config-item">
+            <span class="config-name">Config-DE-2</span>
+            <button class="copy-btn" onclick="copyConfig(this, 'vless://example-config-2')">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+                کپی
+            </button>
+        </div>
+
+        <div class="config-item">
+            <span class="config-name">Config-NL-3</span>
+            <button class="copy-btn" onclick="copyConfig(this, 'vless://example-config-3')">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+                کپی
+            </button>
+        </div>
+
+        <!-- SUPPORT BUTTON BELOW CONFIGS -->
+        <div class="support-section">
+            <a href="tel:+989391268620" class="support-btn-bottom">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+                تماس مستقیم با پشتیبانی
+            </a>
+            <div class="support-number en-font" style="margin-top: 8px;">+98 939 126 8620</div>
+        </div>
+    </div>
+
 </div>
 
-<div class="overlay" id="qr-modal" onclick="this.style.display='none'">
-  <div class="modal glass" onclick="event.stopPropagation()">
-    <button class="x" onclick="document.getElementById('qr-modal').style.display='none'">✕</button>
-    <h4>SCAN QR CODE</h4>
-    <canvas id="qr-canvas" style="display:block;margin:0 auto;border-radius:14px"></canvas>
-    <p style="color:var(--muted);font-size:.76rem;margin-top:12px">با V2RayNG یا Nekobox اسکن کنید</p>
-  </div>
-</div>
+<!-- TOAST -->
+<div class="toast" id="toast">✅ کانفیگ کپی شد!</div>
 
-<div class="toast" id="toast">کپی شد!</div>
-<div id="raw-data" style="display:none" data-up="{{ .uploadByte }}" data-down="{{ .downloadByte }}" data-total="{{ .totalByte }}"></div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 <script>
-var SUB_URL = "{{ .subUrl }}";
+    function copyConfig(btn, config) {
+        navigator.clipboard.writeText(config).then(() => {
+            btn.classList.add('copied');
+            btn.innerHTML = `
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                کپی شد!
+            `;
+            showToast();
+            setTimeout(() => {
+                btn.classList.remove('copied');
+                btn.innerHTML = `
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                    </svg>
+                    کپی
+                `;
+            }, 2000);
+        });
+    }
 
-document.querySelectorAll('.datetime-value').forEach(function(el){
-  var s = el.getAttribute('data-s'), m = el.getAttribute('data-ms');
-  if (s && s !== '0' && s !== '-') {
-    var d = new Date(parseInt(s) * 1000);
-    el.textContent = d.toLocaleDateString('fa-IR') + ' ' + d.toLocaleTimeString('fa-IR', {hour:'2-digit', minute:'2-digit'});
-  } else if (m && m !== '0') {
-    var dt = new Date(parseInt(m)), min = Math.floor((Date.now() - dt) / 60000);
-    if (min < 1) el.textContent = 'همین الان';
-    else if (min < 60) el.textContent = min + ' دقیقه پیش';
-    else if (min < 1440) el.textContent = Math.floor(min/60) + ' ساعت پیش';
-    else el.textContent = dt.toLocaleDateString('fa-IR');
-  } else el.textContent = 'نامحدود';
-});
-
-/* سیک‌بار بلوکی: مصرف‌شده قرمز جیگری / باقیمانده زرد */
-var rd = document.getElementById('raw-data');
-var used = 0, total = 0;
-if (rd) {
-  used = parseInt(rd.getAttribute('data-up')) + parseInt(rd.getAttribute('data-down'));
-  total = parseInt(rd.getAttribute('data-total'));
-}
-var SEG = 20;
-var usedCount = total > 0 ? Math.min(Math.round((used / total) * SEG), SEG) : 0;
-var blocksEl = document.getElementById('blocks');
-for (var i = 0; i < SEG; i++) {
-  var s = document.createElement('span');
-  s.className = i < usedCount ? 'used' : 'rem';
-  blocksEl.appendChild(s);
-}
-
-function proto(l){
-  if (l.indexOf('vless://')===0) return 'VLESS';
-  if (l.indexOf('vmess://')===0) return 'VMESS';
-  if (l.indexOf('trojan://')===0) return 'TROJAN';
-  if (l.indexOf('ss://')===0) return 'SHADOWSOCKS';
-  if (l.indexOf('hy')===0) return 'HYSTERIA2';
-  if (l.indexOf('tuic://')===0) return 'TUIC';
-  if (l.indexOf('wg://')===0||l.indexOf('wireguard://')===0) return 'WIREGUARD';
-  return 'CONFIG';
-}
-document.querySelectorAll('[data-proto]').forEach(function(el){ el.textContent = proto(el.getAttribute('data-proto')); });
-
-function toast(msg){
-  var t = document.getElementById('toast');
-  t.textContent = msg || 'کپی شد!';
-  t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 2200);
-}
-function copyText(text, msg){
-  function done(){ toast(msg); }
-  if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done); }
-  else {
-    var ta = document.createElement('textarea');
-    ta.value = text; document.body.appendChild(ta); ta.select();
-    document.execCommand('copy'); document.body.removeChild(ta); done();
-  }
-}
-document.querySelectorAll('[data-link]').forEach(function(b){
-  b.addEventListener('click', function(e){ e.preventDefault(); copyText(this.getAttribute('data-link')); });
-});
-
-document.getElementById('copy-all').addEventListener('click', function(){
-  var all = [];
-  document.querySelectorAll('.config-copy').forEach(function(b){ all.push(b.getAttribute('data-link')); });
-  if (all.length) copyText(all.join('\n'), '🦇 همه کانفیگ‌ها کپی شد!');
-  else toast('کانفیگی یافت نشد!');
-});
-
-function openQR(){
-  document.getElementById('qr-modal').style.display = 'flex';
-  new QRious({ element: document.getElementById('qr-canvas'), value: SUB_URL, size: 240, background:'#ffffff', foreground:'#0d0d0d', level:'H' });
-}
+    function showToast() {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2500);
+    }
 </script>
+
 </body>
 </html>
