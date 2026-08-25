@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>کمپانی سایبری پهلوان | Gotham</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Playfair+Display:wght@400;500;600&family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 @import url('https://v1.fontapi.ir/css/Doran');
 @font-face{
@@ -19,9 +19,9 @@
   --frost:rgba(238,238,238,.85);
   --line:rgba(255,255,255,.28);
   --muted:rgba(255,255,255,.75);
-  --yellow:#ffd60a; --liver:#8b0f12;
+  --yellow:#ffd60a; --liver:#8b0f12; --green:#3ddc84;
   --serif:'Playfair Display',serif;
-  --lux:'Italiana',serif;
+  --lux:'Bodoni Moda',serif;
   --light:'Vazirmatn',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -60,11 +60,10 @@ body{
 .brand{display:flex;align-items:center;gap:12px}
 .brand svg{width:36px;fill:var(--yellow);animation:batvanish 4s infinite;filter:drop-shadow(0 0 8px rgba(255,214,10,.5))}
 @keyframes batvanish{0%,100%{opacity:1}50%{opacity:0}55%{opacity:1}}
-/* ✅ اسم بزرگ‌تر */
 .brand h1{font-family:'Doran','Vazirmatn',sans-serif;font-size:1.35rem;font-weight:900}
 .brand small{display:block;font-family:var(--serif);font-size:.58rem;letter-spacing:.3em;color:var(--yellow);text-transform:uppercase;margin-top:2px;white-space:nowrap}
 
-/* ✅ Online با حاشیه مشکی گلس */
+/* ✅ ONLINE سبز */
 .live{
   display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.78rem;letter-spacing:.18em;
   padding:8px 18px;border-radius:99px;
@@ -73,26 +72,35 @@ body{
   box-shadow:0 4px 16px rgba(0,0,0,.4), inset 0 0 12px rgba(255,255,255,.05);
 }
 .live i{width:9px;height:9px;border-radius:50%;display:inline-block}
-.live.on,.live.off{color:var(--white)}
-.live.on i,.live.off i{background:#3ddc84;box-shadow:0 0 10px #3ddc84;animation:blinkp 1.4s infinite}
+.live.on,.live.off{color:var(--green)}
+.live.on i,.live.off i{background:var(--green);box-shadow:0 0 10px var(--green);animation:blinkp 1.4s infinite}
 .live.dead{color:#ffb0b0}
 .live.dead i{background:#ff3b3b;box-shadow:0 0 10px #ff3b3b}
 @keyframes blinkp{0%,100%{opacity:1}50%{opacity:.25}}
 
+/* ✅ Germany VIP — دکمه تیره‌تر + متن انگلیسی */
 .loc-pill{
-  display:inline-flex;align-items:center;gap:8px;
-  border:1px solid var(--line);border-radius:99px;padding:6px 18px;
-  font-size:.7rem;color:var(--muted);background:rgba(0,0,0,.15);
+  display:inline-flex;align-items:center;gap:10px;direction:ltr;
+  border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:8px 22px;
+  font-family:var(--serif);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--white);
+  background:rgba(0,0,0,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 6px 18px rgba(0,0,0,.45);
 }
 .loc-wrap{display:flex;justify-content:center;margin-bottom:26px}
-.flag-de{width:14px;height:14px;border-radius:50%;flex-shrink:0;
+/* ✅ پرچم آلمان متحرک */
+.flag-de{width:15px;height:15px;border-radius:50%;flex-shrink:0;
   background:linear-gradient(180deg,#000 0 33.3%,#dd0000 33.3% 66.6%,#ffce00 66.6% 100%);
-  box-shadow:0 0 0 1px rgba(255,255,255,.3)}
+  animation:flagwave 1.8s infinite;
+}
+@keyframes flagwave{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 1px rgba(255,255,255,.3),0 0 6px rgba(255,206,0,.4)}
+  50%{transform:scale(1.2);box-shadow:0 0 0 1px rgba(255,255,255,.55),0 0 16px rgba(255,206,0,.95)}
+}
 
 /* ===== HERO ===== */
 .hero{text-align:center;padding:10px 10px 34px}
 .kicker{font-family:var(--serif);letter-spacing:.5em;font-size:.68rem;color:var(--muted);text-transform:uppercase}
-/* ✅ ایکون بتمن خاموش/روشن به جای BATMAN */
 .bat-hero{margin:18px auto 10px}
 .bat-hero svg{
   width:120px;fill:var(--white);
@@ -106,18 +114,19 @@ body{
 .badge{border:1px solid var(--line);border-radius:99px;padding:5px 16px;font-size:.7rem;color:var(--muted);background:rgba(0,0,0,.15)}
 .badge.dead{border-color:rgba(255,90,90,.5);color:#ffb0b0}
 
-/* ===== STATS — فونت جدید Italiana ===== */
+/* ===== STATS — فونت Bodoni Moda ===== */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:30px}
 .tile{padding:18px 6px;text-align:center;border-inline-start:1px solid var(--line)}
 .tile:first-child{border-inline-start:none}
-.tile b{display:block;font-family:var(--lux);font-weight:400;font-size:1.75rem;direction:ltr;margin-bottom:6px;letter-spacing:.03em}
+.tile b{display:block;font-family:var(--lux);font-weight:500;font-size:1.6rem;direction:ltr;margin-bottom:6px;letter-spacing:.02em}
 .tile span{font-size:.6rem;letter-spacing:.2em;color:var(--muted)}
 .tile.y b{color:var(--yellow)}
 
-/* ===== TRAFFIC — سیک‌بار داخل قاب گلس ===== */
+/* ===== TRAFFIC ===== */
 .traffic{margin-bottom:26px}
-.traffic .lbl{display:flex;justify-content:space-between;font-size:.74rem;color:var(--muted);margin-bottom:10px}
-.traffic .lbl b{color:var(--yellow);font-weight:400}
+/* ✅ فونت لیبل‌های سیک‌بار عوض شد */
+.traffic .lbl{display:flex;justify-content:space-between;font-family:'Doran','Vazirmatn',sans-serif;font-weight:700;font-size:.72rem;color:var(--muted);margin-bottom:10px}
+.traffic .lbl b{color:var(--yellow);font-weight:700}
 .traffic .lbl i{font-style:normal;color:#ff6b6b}
 .track-glass{
   padding:8px;border-radius:99px;
@@ -126,10 +135,11 @@ body{
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   box-shadow:inset 0 0 18px rgba(255,255,255,.06), 0 6px 20px rgba(0,0,0,.25);
 }
-.blocks{display:flex;gap:3px;height:10px;direction:rtl}
-.blocks span{flex:1;border-radius:99px}
+/* ✅ بلوک‌ها پیوسته و بدون فاصله */
+.blocks{display:flex;gap:0;height:10px;direction:rtl;border-radius:99px;overflow:hidden}
+.blocks span{flex:1;border-radius:0}
 .blocks span.rem{background:linear-gradient(180deg,#ffe45c,var(--yellow));animation:glowp 2.4s infinite}
-.blocks span.used{background:linear-gradient(180deg,#a11212,var(--liver))}
+.blocks span.used{background:linear-gradient(180deg,#c11a1a,var(--liver))}
 @keyframes glowp{0%,100%{box-shadow:0 0 4px rgba(255,214,10,.3)}50%{box-shadow:0 0 12px rgba(255,214,10,.7)}}
 
 /* ===== PANELS ===== */
@@ -165,7 +175,7 @@ body{
 /* ===== ACTIONS ===== */
 .actions{display:flex;flex-direction:column;gap:14px;margin-bottom:26px}
 
-/* ✅ دکمه پشتیبانی = هم‌شکل دکمه کپی کانفیگ‌ها */
+/* ✅ دکمه پشتیبانی = دقیقاً هم‌شکل دکمه کپی کانفیگ‌ها */
 .support-btn{
   width:100%;margin-top:14px;
   display:flex;align-items:center;justify-content:center;gap:10px;
@@ -221,7 +231,7 @@ body{
   <div class="loc-wrap">
     <span class="loc-pill">
       <span class="flag-de"></span>
-      لوکیشن: آیپی ثابت کشور آلمان
+      Germany VIP
     </span>
   </div>
 
