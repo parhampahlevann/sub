@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>کمپانی سایبری پهلوان | Gotham Invest</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 @import url('https://v1.fontapi.ir/css/Doran');
@@ -15,33 +16,34 @@
   font-weight:100 900; font-style:normal; font-display:swap;
 }
 :root{
-  --bg:#03070a;
-  --card:#121a20;
-  --sheet:#0d1317;
-  --pill:#242c33;
-  --pill-h:#2f383f;
-  --txt:#f5f7f8;
-  --gray:#8b96a0;
+  --bg:#050807;
+  --card:#1c2826;
+  --sheet:#141b19;
+  --pill-active:#2b3533;
+  --glass:rgba(160,175,172,.14);
+  --glass-b:rgba(255,255,255,.10);
+  --txt:#f2f5f4;
+  --gray:#8fa6a2;
   --blue:#2ea8e6;
-  --green:#1fcf65; --green2:#4ade80;
+  --green:#22c55e; --green2:#4ade80;
   --red:#ef4444;
   --yellow:#ffd60a;
   --num:'Manrope','Vazirmatn',sans-serif;
   --fa:'Vazirmatn',sans-serif;
+  --fab:'Doran','Vazirmatn',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
 body{
   min-height:100vh;color:var(--txt);font-family:var(--fa);font-weight:400;
   background:
-    radial-gradient(900px 480px at 50% -8%, rgba(18,80,98,.55), transparent 62%),
-    radial-gradient(640px 320px at 88% 4%, rgba(46,168,230,.14), transparent 60%),
-    linear-gradient(180deg,#050b0e 0%,#020403 55%,#000 100%);
+    radial-gradient(700px 340px at 50% -6%, rgba(21,64,58,.55), transparent 65%),
+    var(--bg);
   padding:18px 16px 44px;overflow-x:hidden;
 }
 .wrap{max-width:540px;margin:0 auto;position:relative;z-index:1}
 
-/* ===== HEADER ===== */
+/* ===== HEADER — دقیقاً مثل عکس ===== */
 .topbar{display:flex;justify-content:space-between;align-items:center;padding:4px 2px 26px}
 .brand{display:flex;align-items:center;gap:11px}
 .logo-ring{
@@ -50,74 +52,77 @@ body{
   display:flex;align-items:center;justify-content:center;
 }
 .logo-ring svg{width:21px;fill:var(--blue);filter:drop-shadow(0 0 6px rgba(46,168,230,.6));animation:batvanish 4s infinite}
-@keyframes batvanish{0%,100%{opacity:1}50%{opacity:.35}}
-.brand-name{font-family:var(--num);font-weight:800;font-size:1.25rem;letter-spacing:-.01em}
-.brand-name .fa{font-family:'Doran','Vazirmatn',sans-serif;font-weight:900}
+@keyframes batvanish{0%,100%{opacity:1}50%{opacity:.15}55%{opacity:1}}
+.brand-name{font-family:var(--num);font-weight:800;font-size:1.3rem;letter-spacing:-.01em;color:#fff}
+.brand-name .fa{font-family:var(--fab);font-weight:900}
 .brand-name b{color:var(--blue);font-weight:800}
-.chev{width:16px;height:16px;stroke:var(--txt);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.live{display:flex;align-items:center;gap:6px;font-family:var(--num);font-size:.7rem;font-weight:700;color:var(--green2);margin-inline-start:4px}
-.live i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:blinkp 1.4s infinite}
+.chev{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.live{display:flex;align-items:center;gap:6px;font-family:var(--num);font-size:.72rem;font-weight:700;color:var(--green2);margin-inline-start:4px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:blinkp 1.4s infinite}
 .live.dead{color:#ff9090}
 .live.dead i{background:var(--red);box-shadow:0 0 10px var(--red)}
 @keyframes blinkp{0%,100%{opacity:1}50%{opacity:.25}}
 .bell{position:relative;width:44px;height:44px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.bell svg{width:26px;height:26px;stroke:var(--txt);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.bell svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .bell i{position:absolute;top:6px;right:8px;width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 8px var(--blue);animation:blinkp 2s infinite}
 
-/* ===== HERO ===== */
-.hero{padding:2px 4px 26px}
+/* ===== HERO — عدد غول + خط سبز ===== */
+.hero{padding:2px 4px 24px}
 .big{
   font-family:var(--num);font-weight:600;font-size:clamp(2.7rem,12vw,3.7rem);
   letter-spacing:-.025em;direction:ltr;text-align:left;line-height:1.05;color:#fff;
 }
-.chg{font-family:var(--num);font-weight:600;font-size:1rem;margin-top:9px;direction:ltr;text-align:left}
+.chg{font-family:var(--num);font-weight:600;font-size:1rem;margin-top:8px;direction:ltr;text-align:left}
 .chg.up{color:var(--green)}
 .chg.down{color:var(--red)}
 .chg .fa{font-family:var(--fa)}
-.track{position:relative;overflow:hidden;margin-top:20px;height:6px;border-radius:99px;background:rgba(255,255,255,.05)}
+.track{position:relative;overflow:hidden;margin-top:18px;height:7px;border-radius:99px;background:rgba(255,255,255,.06)}
 .blocks{display:flex;gap:0;height:100%;direction:rtl;border-radius:99px;overflow:hidden}
 .blocks span{flex:1}
 .blocks span.rem{background:linear-gradient(180deg,#7dd3fc,var(--blue));animation:neonpulse 1.8s infinite}
 .blocks span.used{background:linear-gradient(180deg,#7f1d1d,#450a0a)}
 @keyframes neonpulse{
   0%,100%{box-shadow:0 0 4px rgba(46,168,230,.4)}
-  50%{box-shadow:0 0 12px rgba(46,168,230,.9),0 0 20px rgba(46,168,230,.45)}
+  50%{box-shadow:0 0 12px rgba(46,168,230,.95),0 0 22px rgba(46,168,230,.5)}
 }
 .neon-sweep{position:absolute;top:0;bottom:0;width:38%;right:-45%;
-  background:linear-gradient(90deg,transparent,rgba(125,211,252,.5),rgba(224,247,255,.8),rgba(46,168,230,.5),transparent);
-  filter:blur(2px);mix-blend-mode:screen;animation:sweep 3.2s ease-in-out infinite;pointer-events:none}
+  background:linear-gradient(90deg,transparent,rgba(125,211,252,.6),rgba(224,247,255,.95),rgba(46,168,230,.6),transparent);
+  filter:blur(2px);mix-blend-mode:screen;animation:sweep 2.6s ease-in-out infinite;pointer-events:none}
 @keyframes sweep{0%{right:-45%}100%{right:108%}}
 
-/* ===== CARDS ===== */
-.cards{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;margin-bottom:28px}
-.card{background:var(--card);border-radius:26px;padding:20px 20px 22px;border:1px solid rgba(255,255,255,.04);box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+/* ===== CARDS — دقیقاً مثل عکس ===== */
+.cards{display:grid;grid-template-columns:1.15fr 1fr;gap:13px;margin-bottom:26px}
+.card{background:var(--card);border-radius:24px;padding:20px;border:1px solid rgba(255,255,255,.03)}
 .chart-card{grid-row:span 2;display:flex;flex-direction:column}
-.clabel{color:var(--gray);font-size:.72rem;font-weight:600;letter-spacing:.03em;margin-bottom:10px}
-.cval{font-family:var(--num);font-weight:700;font-size:1.32rem;direction:ltr;text-align:left;color:#fff}
+.clabel{color:var(--gray);font-size:.72rem;font-weight:600;letter-spacing:.02em;margin-bottom:10px}
+.cval{font-family:var(--num);font-weight:700;font-size:1.3rem;direction:ltr;text-align:left;color:#fff}
 .cval.sm{font-size:1.02rem}
 .bigchart{width:100%;height:104px;margin-top:16px;overflow:visible}
 .caxis{display:flex;justify-content:space-between;margin-top:10px;font-size:.64rem;color:var(--gray);font-family:var(--fa);font-weight:500}
 
-/* ===== BOTTOM SHEET ===== */
-.sheet{background:var(--sheet);border-radius:32px;padding:14px 16px 26px;border:1px solid rgba(255,255,255,.05);box-shadow:0 -28px 76px rgba(0,0,0,.6)}
+/* ===== BOTTOM SHEET — دقیقاً مثل عکس ===== */
+.sheet{background:var(--sheet);border-radius:32px;padding:14px 16px 24px;border:1px solid rgba(255,255,255,.04);box-shadow:0 -24px 70px rgba(0,0,0,.55)}
 .handle{width:46px;height:4px;border-radius:99px;background:#3d4745;margin:2px auto 20px}
-.tabs{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none}
+.tabs{display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
+/* دکمه‌ها = استایل تب‌های عکس (pill طوسی شیشه‌ای) */
 .tab{
   flex-shrink:0;border:none;cursor:pointer;padding:13px 22px;border-radius:14px;
-  background:transparent;color:var(--gray);font-family:'Doran','Vazirmatn',sans-serif;
+  background:transparent;color:var(--gray);font-family:var(--fab);
   font-weight:700;font-size:.84rem;transition:.25s;
 }
-.tab.active{background:var(--pill);color:#fff}
+.tab.active{background:var(--pill-active);color:#fff}
 .tabpane{display:none}
 .tabpane.active{display:block;animation:fadein .35s ease}
 @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hint{font-size:.68rem;color:var(--gray);margin:2px 4px 6px}
 
-/* ===== ROWS ===== */
-.row{display:flex;align-items:center;gap:14px;padding:16px 2px}
+/* ===== ROWS — دقیقاً مثل ردیف سهام ===== */
+.row{display:flex;align-items:center;gap:13px;padding:16px 2px;cursor:pointer;border-radius:16px;transition:.2s}
+.row:active{background:rgba(255,255,255,.05)}
 .ricon{
   position:relative;width:48px;height:48px;border-radius:15px;flex-shrink:0;
-  background:#0a0f12;border:1px solid rgba(255,255,255,.06);
+  background:#0a0f0e;border:1px solid rgba(255,255,255,.05);
   display:flex;align-items:center;justify-content:center;
   font-family:var(--num);font-weight:800;font-size:.8rem;color:var(--blue);
 }
@@ -126,46 +131,47 @@ body{
 .meta .name{font-weight:600;font-size:.95rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .meta .proto{font-family:var(--num);font-size:.7rem;font-weight:700;color:var(--gray);letter-spacing:.06em;margin-top:2px}
 .rspark{width:92px;height:36px;flex-shrink:0;overflow:visible}
-.copy{
-  flex-shrink:0;cursor:pointer;transition:.2s;border:none;
-  background:var(--pill);border-radius:13px;color:#fff;
-  padding:11px 20px;font-family:'Doran','Vazirmatn',sans-serif;font-weight:700;font-size:.76rem;
-}
-.copy:hover{background:var(--pill-h)}
+.rprice{flex-shrink:0;min-width:84px;text-align:left;direction:ltr}
+.rprice b{display:block;font-family:var(--num);font-weight:700;font-size:1rem;color:#fff}
+.rprice .up{color:var(--green);font-size:.8rem;font-weight:700;font-family:var(--num)}
+.rprice .up .fa{font-family:var(--fa)}
 .empty{padding:26px;text-align:center;color:var(--gray)}
 
-/* ===== BUTTONS / POTS ===== */
-.btn-gold{
-  width:100%;margin-top:16px;padding:18px;border-radius:16px;border:1px solid var(--yellow);
-  background:linear-gradient(135deg,#ffe45c,#ffd60a);color:#0d0d0d;
-  font-family:'Doran','Vazirmatn',sans-serif;font-weight:900;font-size:.95rem;
-  cursor:pointer;transition:.3s;animation:goldpulse 2.4s infinite;
+/* ===== دکمه‌های pill طوسی شیشه‌ای (مثل عکس) ===== */
+.pill{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--glass-b);border-radius:14px;color:#fff;
+  padding:14px 20px;font-family:var(--fab);font-weight:700;font-size:.84rem;
+  cursor:pointer;transition:.25s;text-decoration:none;text-align:center;
 }
-@keyframes goldpulse{
-  0%,100%{box-shadow:0 0 14px rgba(255,214,10,.25)}
-  50%{box-shadow:0 0 28px rgba(255,214,10,.55)}
-}
-.btn-gold:hover{transform:translateY(-2px)}
+.pill:hover{background:rgba(160,175,172,.24);transform:translateY(-2px)}
+.pill.wide{width:100%;margin-top:16px;padding:17px}
 .pots{display:grid;grid-template-columns:1fr 1fr;gap:13px}
 .pot{
   display:flex;align-items:center;justify-content:center;gap:8px;
-  background:var(--card);border:1px solid rgba(255,255,255,.04);border-radius:22px;
-  padding:19px 12px;color:#fff;font-family:'Doran','Vazirmatn',sans-serif;
+  background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--glass-b);border-radius:22px;
+  padding:19px 12px;color:#fff;font-family:var(--fab);
   font-weight:700;font-size:.84rem;cursor:pointer;transition:.25s;text-decoration:none;text-align:center;
 }
-.pot:hover{background:#19222a;transform:translateY(-2px)}
+.pot:hover{background:rgba(160,175,172,.24);transform:translateY(-2px)}
 .pot.wide{grid-column:span 2}
-.infocard{background:var(--card);border-radius:22px;padding:18px 20px;margin-bottom:13px;border:1px solid rgba(255,255,255,.04)}
+.infocard{
+  background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--glass-b);border-radius:22px;padding:18px 20px;margin-bottom:13px;
+}
 .infocard .clabel{margin-bottom:8px}
 .infocard .cval{font-size:1.08rem}
 .infocard .cval.gr{color:var(--green2)}
 .support-btn{
   width:100%;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:10px;
-  background:rgba(34,197,94,.12);border:1px solid rgba(74,222,128,.4);border-radius:22px;
-  color:var(--green2);padding:18px;font-family:'Doran','Vazirmatn',sans-serif;font-weight:900;font-size:.9rem;
+  background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--glass-b);border-radius:22px;
+  color:var(--green2);padding:18px;font-family:var(--fab);font-weight:900;font-size:.9rem;
   text-decoration:none;transition:.25s;
 }
-.support-btn:hover{background:var(--green);color:#04140a}
+.support-btn:hover{background:rgba(34,197,94,.2);transform:translateY(-2px)}
 .support-btn .phone{font-family:var(--num);font-size:.82rem;direction:ltr;display:inline-block;font-weight:700}
 
 .foot{text-align:center;margin-top:24px;font-size:.68rem;color:var(--gray);letter-spacing:.06em}
@@ -175,20 +181,20 @@ body{
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
 .modal{background:var(--sheet);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:28px;max-width:380px;width:100%;position:relative;text-align:center}
 .modal h4{font-family:var(--num);letter-spacing:.2em;margin-bottom:16px;color:var(--blue);font-size:.95rem;font-weight:700}
-.modal .x{position:absolute;top:14px;left:14px;width:32px;height:32px;border-radius:99px;background:var(--pill);border:none;color:#fff;cursor:pointer;transition:.2s}
+.modal .x{position:absolute;top:14px;left:14px;width:32px;height:32px;border-radius:99px;background:var(--pill-active);border:none;color:#fff;cursor:pointer;transition:.2s}
 .modal .x:hover{background:var(--red);color:#fff}
 .modal p{color:var(--gray);font-size:.76rem;margin-top:12px}
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(90px);
-  background:var(--pill);color:#fff;padding:13px 32px;border-radius:99px;
-  font-family:'Doran','Vazirmatn',sans-serif;font-weight:700;font-size:.82rem;
+  background:var(--pill-active);color:#fff;padding:13px 32px;border-radius:99px;
+  font-family:var(--fab);font-weight:700;font-size:.82rem;
   z-index:2000;opacity:0;transition:.3s;box-shadow:0 10px 30px rgba(0,0,0,.5)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 @media(max-width:430px){
   .cards{grid-template-columns:1fr}
   .chart-card{grid-row:auto}
-  .rspark{width:60px}
-  .copy{padding:10px 14px}
+  .rspark{width:56px}
+  .rprice{min-width:70px}
   .pots{grid-template-columns:1fr}
   .pot.wide{grid-column:auto}
 }
@@ -246,20 +252,24 @@ body{
     </div>
 
     <div class="tabpane active" id="t1">
+      <div class="hint">برای کپی هر کانفیگ، روی ردیف آن بزنید</div>
       {{ range $i, $link := .links }}
-      <div class="row">
+      <div class="row config-copy" data-link="{{ $link }}">
         <div class="ricon"><span data-icon="{{ $link }}">--</span><span class="rdot"></span></div>
         <div class="meta">
           <div class="name">{{ index $.emails $i }}</div>
-          <div class="proto" data-proto="{{ $link }}">PROTOCOL</div>
+          <div class="proto">CONFIG {{ $i }}</div>
         </div>
-        <svg class="rspark" data-spark="{{ $i }}" viewBox="0 0 92 36" preserveAspectRatio="none"></svg>
-        <button class="copy config-copy" data-link="{{ $link }}">کپی</button>
+        <svg class="rspark" viewBox="0 0 92 36" preserveAspectRatio="none"></svg>
+        <div class="rprice">
+          <b data-proto="{{ $link }}">PROTOCOL</b>
+          <span class="up">↗ <span class="fa">کپی</span></span>
+        </div>
       </div>
       {{ else }}
       <div class="empty">هیچ کانفیگی یافت نشد.</div>
       {{ end }}
-      <button class="btn-gold" id="copy-all">کپی همه کانفیگ‌ها</button>
+      <button class="pill wide" id="copy-all">کپی همه کانفیگ‌ها</button>
     </div>
 
     <div class="tabpane" id="t2">
@@ -335,7 +345,6 @@ if (rd) {
   total = parseInt(rd.getAttribute('data-total'));
 }
 
-/* خط تغییرات سبز/قرمز زیر عدد بزرگ */
 var chg = document.getElementById('chg-line');
 if (total > 0) {
   var remainPct = Math.max(100 - (used / total) * 100, 0);
@@ -360,7 +369,6 @@ for (var i = 0; i < SEG; i++) {
   blocksEl.appendChild(s);
 }
 
-/* منحنی نرم (Catmull-Rom) دقیقا مثل گراف عکس */
 function smoothPath(pts){
   var d = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
   for (var i = 0; i < pts.length - 1; i++) {
@@ -372,7 +380,6 @@ function smoothPath(pts){
   return d;
 }
 
-/* گراف بزرگ آبی با خطوط شبکه عمودی */
 (function(){
   var svg = document.getElementById('bigchart');
   if (!svg) return;
@@ -394,8 +401,9 @@ function smoothPath(pts){
   svg.innerHTML = html;
 })();
 
-/* اسپارک‌لاین نویزی سبز/قرمز هر ردیف */
-document.querySelectorAll('.rspark').forEach(function(sv, idx){
+document.querySelectorAll('.row').forEach(function(row, idx){
+  var sv = row.querySelector('.rspark');
+  if (!sv) return;
   var W = 92, H = 36, n = 26;
   var seed = idx * 977 + 31;
   var up = (idx % 2 === 0);
@@ -428,7 +436,6 @@ document.querySelectorAll('[data-icon]').forEach(function(el){
   el.textContent = proto(el.getAttribute('data-icon')).slice(0, 2);
 });
 
-/* تب‌ها */
 document.querySelectorAll('.tab').forEach(function(tb){
   tb.addEventListener('click', function(){
     document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('active'); });
@@ -438,7 +445,6 @@ document.querySelectorAll('.tab').forEach(function(tb){
   });
 });
 
-/* بل = رفتن به تب اطلاعات */
 document.getElementById('bell').addEventListener('click', function(){
   document.querySelector('[data-tab="t3"]').click();
   document.querySelector('.sheet').scrollIntoView({behavior:'smooth'});
