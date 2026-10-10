@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>کمپانی سایبری پهلوان | Gotham Tunnels</title>
+<title>کمپانی سایبری پهلوان | Gotham</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 @import url('https://v1.fontapi.ir/css/Doran');
 @font-face{
@@ -16,185 +15,255 @@
   font-weight:100 900; font-style:normal; font-display:swap;
 }
 :root{
-  --bg:#0b0806;
-  --card:#181512;
-  --tun1:#111c13; --tun2:#0c120e;
-  --dark:#262320;
-  --darkb:rgba(255,255,255,.06);
-  --txt:#f2efe9;
-  --gray:#9b968e;
-  --orange:#ee6a2b; --orange2:#f0703a;
-  --green:#46d16b; --green2:#4ade80;
-  --red:#ef4444;
-  --white-pill:#f4f2ee;
-  --num:'Manrope','Vazirmatn',sans-serif;
-  --fa:'Vazirmatn',sans-serif;
-  --fab:'Doran','Vazirmatn',sans-serif;
+  --ink:#141414; --white:#ffffff;
+  --frost:rgba(238,238,238,.85);
+  --line:rgba(255,255,255,.28);
+  --muted:rgba(255,255,255,.75);
+  --yellow:#ffd60a; --liver:#8b0f12; --green:#3ddc84; --blue:#38bdf8;
+  --serif:'Playfair Display',serif;
+  --lux:'Bodoni Moda',serif;
+  --light:'Vazirmatn',sans-serif;
 }
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  min-height:100vh;color:var(--txt);font-family:var(--fa);font-weight:400;
+  min-height:100vh; color:var(--white);
+  font-family:var(--light); font-weight:300;
   background:
-    radial-gradient(620px 320px at 100% 100%, rgba(238,106,43,.16), transparent 60%),
-    radial-gradient(520px 280px at 0% 100%, rgba(238,106,43,.10), transparent 60%),
-    radial-gradient(700px 300px at 50% -8%, rgba(60,70,50,.35), transparent 65%),
-    var(--bg);
-  padding:16px 14px 44px;overflow-x:hidden;
+    linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.58)),
+    url('https://raw.githubusercontent.com/parhampahlevann/sub/main/bg.jpg') center 22%/cover fixed no-repeat;
+  background-color:#8a3a00;
+  padding:18px 16px 60px; overflow-x:hidden;
+  text-shadow:0 1px 14px rgba(0,0,0,.45);
 }
-.wrap{max-width:560px;margin:0 auto;position:relative;z-index:1}
+.wrap{max-width:760px;margin:0 auto;position:relative;z-index:1}
 
-/* ===== HEADER ===== */
-.topbar{display:flex;justify-content:space-between;align-items:center;padding:4px 2px 20px}
-.sq{
-  width:46px;height:46px;border-radius:15px;flex-shrink:0;
-  background:var(--dark);border:1px solid var(--darkb);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;
+.btn-solid{
+  display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+  background:var(--frost); color:var(--ink); border:none; border-radius:16px;
+  padding:18px 24px; font-family:'Doran','Vazirmatn',sans-serif; font-weight:700; font-size:.95rem;
+  cursor:pointer; transition:.3s; text-decoration:none;
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  text-shadow:none;
 }
-.sq svg{width:21px;height:21px;stroke:var(--txt);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.sq.orange{background:var(--orange);border-color:var(--orange)}
-.sq.orange svg{stroke:#fff;fill:#fff}
-.sq:hover{transform:translateY(-2px)}
-.hgroup{display:flex;gap:10px}
-.livedot{width:12px;height:12px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px var(--orange);animation:blinkp 1.6s infinite}
-@keyframes blinkp{0%,100%{opacity:1}50%{opacity:.35}}
+.btn-solid:hover{background:#fff;transform:translateY(-2px)}
+.btn-line{
+  display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+  background:transparent; color:var(--white); border:2px solid var(--white); border-radius:16px;
+  padding:16px 24px; font-family:'Doran','Vazirmatn',sans-serif; font-weight:700; font-size:.9rem;
+  cursor:pointer; transition:.3s; text-decoration:none;
+}
+.btn-line:hover{background:var(--white);color:var(--ink)}
 
-/* ===== STATS CARDS ===== */
-.srow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.scard{background:var(--card);border:1px solid var(--darkb);border-radius:18px;padding:14px;overflow:hidden}
-.bars{display:flex;align-items:flex-end;gap:3px;height:44px}
-.bars i{flex:1;background:#57544e;border-radius:2px;min-height:3px}
-.stxt{color:var(--gray);font-size:.7rem;margin-top:10px;line-height:1.6}
-.stxt b{color:var(--txt);font-family:var(--num);font-weight:700}
+/* ✅ کپی همه کانفیگ‌ها: داخل زرد، نوشته مشکی */
+.btn-gold{
+  display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+  background:linear-gradient(135deg,#ffe45c,#ffd60a);
+  border:1px solid var(--yellow); border-radius:16px;
+  padding:18px 24px; font-family:'Doran','Vazirmatn',sans-serif; font-weight:900; font-size:.95rem;
+  cursor:pointer; transition:.3s; color:#0d0d0d; text-shadow:none;
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  box-shadow:0 0 28px rgba(255,214,10,.45), 0 10px 28px rgba(0,0,0,.4);
+  animation:goldpulse 2.2s infinite;
+}
+@keyframes goldpulse{
+  0%,100%{box-shadow:0 0 18px rgba(255,214,10,.35),0 8px 24px rgba(0,0,0,.4)}
+  50%{box-shadow:0 0 40px rgba(255,214,10,.75),0 8px 28px rgba(255,214,10,.3)}
+}
+.btn-gold:hover{background:linear-gradient(135deg,#fff08a,#ffe45c);transform:translateY(-2px)}
 
-/* ===== TAB BAR ===== */
-.tabbar{display:flex;background:#1d1b18;border:1px solid var(--darkb);border-radius:16px;padding:6px;gap:4px;margin-bottom:20px}
-.titem{
-  flex:1;height:44px;display:flex;align-items:center;justify-content:center;gap:8px;
-  border-radius:12px;background:transparent;border:none;cursor:pointer;
-  color:var(--gray);transition:.25s;font-family:var(--fab);font-weight:700;font-size:.82rem;
-}
-.titem svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.titem .lbl,.titem .cnt{display:none}
-.titem.active{background:var(--white-pill);color:#141414}
-.titem.active svg{display:none}
-.titem.active .lbl{display:inline}
-.titem.active .cnt{display:inline;background:#d9d5cf;color:#333;border-radius:8px;padding:2px 9px;font-size:.7rem;font-family:var(--num);font-weight:800}
-.tabpane{display:none}
-.tabpane.active{display:block;animation:fadein .35s ease}
-@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* ===== TOPBAR ===== */
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 4px 26px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.brand svg{width:36px;fill:var(--yellow);animation:batvanish 4s infinite;filter:drop-shadow(0 0 8px rgba(255,214,10,.5))}
+@keyframes batvanish{0%,100%{opacity:1}50%{opacity:0}55%{opacity:1}}
+.brand h1{font-family:'Doran','Vazirmatn',sans-serif;font-size:1.35rem;font-weight:900}
+.brand small{display:block;font-family:var(--serif);font-size:.58rem;letter-spacing:.3em;color:var(--yellow);text-transform:uppercase;margin-top:2px;white-space:nowrap}
 
-/* ===== SECTION HEAD ===== */
-.sechead{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
-.sechead h2{font-family:var(--fab);font-weight:900;font-size:1.25rem;color:#fff}
-.cnt2{background:var(--dark);border:1px solid var(--darkb);color:var(--gray);border-radius:9px;padding:3px 10px;font-family:var(--num);font-size:.72rem;font-weight:800}
-.spacer{flex:1}
-.btn-dark,.btn-orange{
-  border:none;cursor:pointer;border-radius:14px;padding:13px 22px;
-  font-family:var(--fab);font-weight:700;font-size:.84rem;color:#fff;transition:.25s;text-decoration:none;
-  display:inline-flex;align-items:center;gap:8px;
+.live{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--serif);font-size:1.1rem;letter-spacing:.15em;font-weight:600;
+  background:transparent;border:none;box-shadow:none;backdrop-filter:none;padding:0;
 }
-.btn-dark{background:var(--dark);border:1px solid var(--darkb)}
-.btn-dark:hover{background:#332f2b}
-.btn-orange{background:var(--orange);box-shadow:0 6px 22px rgba(238,106,43,.35)}
-.btn-orange:hover{background:var(--orange2);transform:translateY(-2px)}
+.live i{width:14px;height:14px;border-radius:50%;display:inline-block}
+.live.on,.live.off{color:var(--green)}
+.live.on i,.live.off i{background:var(--green);box-shadow:0 0 14px var(--green);animation:blinkp 1.4s infinite}
+.live.dead{color:#ffb0b0}
+.live.dead i{background:#ff3b3b;box-shadow:0 0 12px #ff3b3b}
+@keyframes blinkp{0%,100%{opacity:1}50%{opacity:.25}}
 
-/* ===== TUNNEL CARD ===== */
-.tcard{
-  background-image:radial-gradient(rgba(120,255,160,.055) 1px, transparent 1.4px), linear-gradient(150deg,var(--tun1),var(--tun2) 70%);
-  background-size:16px 16px, auto;
-  border:1px solid rgba(255,255,255,.05);border-radius:22px;
-  padding:18px;margin-bottom:16px;position:relative;overflow:hidden;
+.loc-pill{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(255,255,255,.15);border-radius:99px;padding:7px 20px;
+  font-family:'Doran','Vazirmatn',sans-serif;font-weight:700;font-size:.72rem;
+  color:var(--white);
+  background:rgba(0,0,0,.25);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  box-shadow:0 4px 14px rgba(0,0,0,.25);
 }
-.thead{display:flex;gap:12px;align-items:center}
-.flag{
-  width:46px;height:46px;border-radius:13px;flex-shrink:0;
-  background:var(--dark);border:1px solid var(--darkb);
-  display:flex;align-items:center;justify-content:center;font-size:22px;
+.loc-wrap{display:flex;justify-content:center;margin-bottom:26px}
+.flag-de{width:15px;height:15px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(180deg,#000 0 33.3%,#dd0000 33.3% 66.6%,#ffce00 66.6% 100%);
+  animation:flagwave 1.8s infinite;
 }
-.flag.proto{font-family:var(--num);font-weight:800;font-size:.78rem;color:var(--orange2)}
-.tname{flex:1;min-width:0}
-.tname b{display:block;font-weight:700;font-size:1rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tname span{display:block;color:var(--gray);font-size:.74rem;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tstat{display:flex;align-items:center;gap:7px;color:var(--gray);font-family:var(--num);font-size:.8rem;font-weight:600;flex-shrink:0}
-.tstat .od{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:blinkp 1.6s infinite}
-.tstat.dead .od{background:var(--red);box-shadow:0 0 10px var(--red)}
-.tags{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
-.tag{background:var(--dark);color:#cfcac4;border-radius:10px;padding:6px 13px;font-family:var(--num);font-size:.68rem;font-weight:800;letter-spacing:.06em}
-.tag.turbo{background:rgba(238,106,43,.16);color:var(--orange2)}
-.tag.outline{background:transparent;border:1px solid rgba(255,255,255,.14);color:var(--gray)}
-.tbody{display:flex;gap:14px;align-items:flex-end;margin-top:8px}
-.tleft{flex-shrink:0}
-.ping{font-family:var(--num);font-weight:700;font-size:3rem;color:#fff;line-height:1;letter-spacing:-.02em;direction:ltr;text-align:left}
-.ping.small{font-size:2.1rem}
-.ping small{font-size:1rem;color:var(--gray);font-weight:600;letter-spacing:0}
-.ln{color:var(--gray);font-size:.78rem;margin-top:8px;font-family:var(--num);font-weight:600;direction:ltr;text-align:left}
-.ln .fa{font-family:var(--fa)}
-.tchart{flex:1;height:112px;overflow:visible}
-.tdiv{height:1px;background:rgba(255,255,255,.06);margin:16px -18px}
-.tfoot{display:flex;align-items:center;gap:12px}
-.amt{font-family:var(--num);font-weight:800;color:#fff;font-size:.95rem;direction:ltr;white-space:nowrap}
-.amt span{color:var(--gray);font-weight:600}
-.dots{flex:1;display:flex;gap:3px;align-items:center}
-.dots i{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.10)}
-.dots i.on{background:#cfcac4}
-.icobtn{
-  width:41px;height:41px;border-radius:13px;flex-shrink:0;
-  background:var(--dark);border:1px solid var(--darkb);color:#e8e4de;
-  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;
+@keyframes flagwave{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 1px rgba(255,255,255,.3),0 0 6px rgba(255,206,0,.4)}
+  50%{transform:scale(1.2);box-shadow:0 0 0 1px rgba(255,255,255,.55),0 0 16px rgba(255,206,0,.95)}
 }
-.icobtn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.icobtn:hover{background:#332f2b;transform:translateY(-2px)}
-.tact{display:flex;align-items:center;gap:10px;margin-top:14px}
-.dl{font-family:var(--num);font-size:.84rem;color:#fff;direction:ltr;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dl .ar{color:var(--gray);font-weight:600}
 
-/* ===== QUICK / INFO ===== */
-.pots{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pot{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  background:var(--card);border:1px solid var(--darkb);border-radius:18px;
-  padding:18px 12px;color:#fff;font-family:var(--fab);font-weight:700;font-size:.84rem;
-  cursor:pointer;transition:.25s;text-decoration:none;text-align:center;
+/* ===== HERO ===== */
+.hero{text-align:center;padding:10px 10px 34px}
+.kicker{font-family:var(--serif);letter-spacing:.5em;font-size:.68rem;color:var(--muted);text-transform:uppercase}
+.bat-hero{margin:18px auto 10px}
+.bat-hero svg{
+  width:120px;fill:var(--white);
+  animation:batblink 2.2s infinite;
+  filter:drop-shadow(0 0 16px rgba(255,255,255,.4));
 }
-.pot:hover{background:#221e1a;transform:translateY(-2px)}
-.pot.wide{grid-column:span 2}
-.infocard{background:var(--card);border:1px solid var(--darkb);border-radius:18px;padding:16px 18px;margin-bottom:12px}
-.iclabel{color:var(--gray);font-size:.72rem;font-weight:600;margin-bottom:8px}
-.icval{font-family:var(--num);font-weight:700;font-size:1.05rem;direction:ltr;text-align:left;color:#fff}
-.icval.fa{font-family:var(--fa);direction:rtl;text-align:right}
-.icval.gr{color:var(--green2)}
+@keyframes batblink{0%,100%{opacity:1}50%{opacity:.12}}
+.hero h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,6vw,2.6rem);line-height:1.15;margin:10px 0 8px;letter-spacing:.02em}
+.hero .mail{color:var(--muted);font-size:.85rem;word-break:break-all}
+.badges{margin-top:16px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.badge{
+  border-radius:99px;padding:6px 18px;
+  font-family:'Doran','Vazirmatn',sans-serif;font-size:.74rem;font-weight:900;
+  background:rgba(0,0,0,.15);
+}
+/* ✅ انقضا و آخرین اتصال: داخل سبز-آبی، نوشته مشکی */
+.badge-expire,.badge-connect{
+  background:linear-gradient(135deg,#3ddc84,#38bdf8);
+  color:#0d0d0d; border:1px solid rgba(61,220,132,.6);
+  text-shadow:none;
+  box-shadow:0 0 16px rgba(56,189,248,.35);
+}
+/* وقتی سرویس تموم شد: قرمز */
+.badge-expire.expired{
+  background:linear-gradient(135deg,#ff6b6b,#c11a1a);
+  color:#fff; border:1px solid rgba(255,107,107,.6);
+  box-shadow:0 0 16px rgba(255,107,107,.45);
+}
+.badge.dead{background:linear-gradient(135deg,#ff6b6b,#c11a1a);color:#fff;border:1px solid rgba(255,107,107,.6)}
+
+/* ===== STATS ===== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:30px}
+.tile{padding:18px 6px 14px;text-align:center;border-inline-start:1px solid var(--line)}
+.tile:first-child{border-inline-start:none}
+.tile b{display:block;font-family:var(--lux);font-weight:500;font-size:1.6rem;direction:ltr;margin-bottom:4px;letter-spacing:.02em}
+.tile span{font-size:.6rem;letter-spacing:.2em;color:var(--muted)}
+.tile.y b{color:var(--yellow)}
+.spark{width:78%;max-width:96px;height:22px;margin:2px auto 8px;display:block;overflow:visible}
+.spark .drawline{
+  stroke-dasharray:150;stroke-dashoffset:150;
+  animation:draw 1.8s ease forwards;
+  filter:drop-shadow(0 0 4px rgba(56,189,248,.65));
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+.spark .dotend{animation:dotpulse 2s infinite}
+@keyframes dotpulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ===== TRAFFIC — سیک‌بار آبی NEON ===== */
+.traffic{margin-bottom:26px}
+.traffic .lbl{display:flex;justify-content:space-between;font-family:'Doran','Vazirmatn',sans-serif;font-weight:700;font-size:.72rem;color:var(--muted);margin-bottom:10px}
+.traffic .lbl b{color:var(--blue);font-weight:700}
+.traffic .lbl i{font-style:normal;color:#ff6b6b}
+.track-glass{
+  position:relative;overflow:hidden;
+  padding:8px;border-radius:99px;
+  border:1px solid rgba(56,189,248,.45);
+  background:rgba(56,189,248,.08);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:inset 0 0 18px rgba(56,189,248,.10), 0 0 22px rgba(56,189,248,.25), 0 6px 20px rgba(0,0,0,.25);
+}
+.blocks{display:flex;gap:0;height:10px;direction:rtl;border-radius:99px;overflow:hidden}
+.blocks span{flex:1;border-radius:0}
+.blocks span.rem{
+  background:linear-gradient(180deg,#7dd3fc,var(--blue));
+  animation:neonpulse 1.8s infinite;
+}
+.blocks span.used{background:linear-gradient(180deg,#c11a1a,var(--liver))}
+@keyframes neonpulse{
+  0%,100%{box-shadow:0 0 4px rgba(56,189,248,.4), inset 0 0 3px rgba(255,255,255,.3)}
+  50%{box-shadow:0 0 16px rgba(56,189,248,.95), 0 0 30px rgba(56,189,248,.5), inset 0 0 6px rgba(255,255,255,.5)}
+}
+/* ✅ جاروب نئونی روی نوار */
+.neon-sweep{
+  position:absolute;top:0;bottom:0;width:38%;
+  right:-45%;
+  background:linear-gradient(90deg,transparent,rgba(125,211,252,.65),rgba(224,247,255,.95),rgba(56,189,248,.65),transparent);
+  filter:blur(2px);
+  mix-blend-mode:screen;
+  animation:sweep 2.6s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes sweep{0%{right:-45%}100%{right:108%}}
+
+/* ===== PANELS ===== */
+.panel{background:rgba(8,8,8,.30);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:26px}
+.panel-title{display:flex;align-items:center;gap:10px;font-family:'Doran','Vazirmatn',sans-serif;font-size:.95rem;font-weight:900;margin-bottom:16px}
+.panel-title::before{content:'';width:1px;height:16px;background:var(--white);opacity:.6}
+
+.chart{position:relative;width:100%;height:120px}
+.chart svg{width:100%;height:100%;overflow:visible}
+.chart-axis{display:flex;justify-content:space-between;margin-top:8px;font-size:.54rem;font-family:'Doran','Vazirmatn',sans-serif;font-weight:700;color:var(--muted);direction:rtl;letter-spacing:0}
+.chart-axis span{flex:1;text-align:center}
+.chart-legend{display:flex;justify-content:center;gap:18px;margin-top:12px;font-size:.66rem;color:var(--muted)}
+.chart-legend .dot{display:inline-block;width:9px;height:9px;border-radius:99px;vertical-align:middle;margin-left:6px}
+.dot.used{background:var(--liver)}
+.dot.avg{background:var(--yellow)}
+
+/* ===== CONFIGS ===== */
+.configs{counter-reset:cfg}
+.row{counter-increment:cfg;display:flex;align-items:center;gap:12px;padding:14px 4px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.idx{font-family:var(--serif);font-size:1rem;color:var(--muted);min-width:30px;text-align:center}
+.idx::before{content:counter(cfg,decimal-leading-zero)}
+.meta{flex:1;min-width:0}
+.meta .name{font-weight:400;font-size:.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta .proto{font-family:var(--serif);font-size:.58rem;letter-spacing:.3em;color:var(--muted)}
+.copy{background:transparent;border:1px solid var(--white);border-radius:12px;color:var(--white);
+  padding:7px 18px;font-family:'Doran','Vazirmatn',sans-serif;font-weight:700;font-size:.7rem;
+  cursor:pointer;transition:.25s;flex-shrink:0}
+.copy:hover{background:var(--white);color:var(--ink)}
+.empty{padding:20px;text-align:center;color:var(--muted)}
+
+/* ===== ACTIONS ===== */
+.actions{display:flex;flex-direction:column;gap:14px;margin-bottom:26px}
+
 .support-btn{
-  width:100%;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:10px;
-  background:rgba(238,106,43,.14);border:1px solid rgba(238,106,43,.45);border-radius:18px;
-  color:var(--orange2);padding:17px;font-family:var(--fab);font-weight:900;font-size:.9rem;
-  text-decoration:none;transition:.25s;
+  width:100%;margin-top:14px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:transparent;border:1px solid var(--white);border-radius:12px;color:var(--white);
+  padding:14px 20px;font-family:'Doran','Vazirmatn',sans-serif;font-weight:700;font-size:.85rem;
+  cursor:pointer;transition:.25s;text-decoration:none;
 }
-.support-btn:hover{background:var(--orange);color:#fff}
-.support-btn .phone{font-family:var(--num);font-size:.82rem;direction:ltr;display:inline-block;font-weight:700}
+.support-btn:hover{background:var(--white);color:var(--ink)}
+.support-btn .phone{font-family:var(--serif);font-size:.8rem;letter-spacing:.12em;direction:ltr;display:inline-block}
 
-.foot{text-align:center;margin-top:24px;font-size:.68rem;color:var(--gray);letter-spacing:.06em}
-.foot b{color:var(--orange2)}
+.foot{text-align:center;margin-top:34px;font-family:var(--serif);font-size:.68rem;letter-spacing:.25em;color:var(--yellow);text-transform:uppercase}
 
 /* ===== MODAL / TOAST ===== */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
-.modal{background:#14110e;border:1px solid rgba(255,255,255,.08);border-radius:26px;padding:28px;max-width:380px;width:100%;position:relative;text-align:center}
-.modal h4{font-family:var(--num);letter-spacing:.2em;margin-bottom:16px;color:var(--orange2);font-size:.95rem;font-weight:800}
-.modal .x{position:absolute;top:14px;left:14px;width:32px;height:32px;border-radius:10px;background:var(--dark);border:1px solid var(--darkb);color:#fff;cursor:pointer;transition:.2s}
-.modal .x:hover{background:var(--red);border-color:var(--red)}
-.modal p{color:var(--gray);font-size:.76rem;margin-top:12px}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+.modal{background:var(--frost);color:var(--ink);border-radius:20px;padding:28px;max-width:380px;width:100%;position:relative;text-align:center;text-shadow:none}
+.modal h4{font-family:var(--serif);letter-spacing:.25em;margin-bottom:16px;font-weight:500}
+.modal .x{position:absolute;top:12px;left:12px;width:32px;height:32px;border-radius:99px;background:transparent;border:1px solid var(--ink);color:var(--ink);cursor:pointer;transition:.2s}
+.modal .x:hover{background:var(--ink);color:#fff}
+.modal p{color:#555;font-size:.76rem;margin-top:12px}
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(90px);
-  background:var(--dark);border:1px solid var(--darkb);color:#fff;padding:13px 32px;border-radius:99px;
-  font-family:var(--fab);font-weight:700;font-size:.82rem;
-  z-index:2000;opacity:0;transition:.3s;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  background:var(--frost);color:var(--ink);padding:12px 30px;border-radius:99px;
+  font-family:'Doran','Vazirmatn',sans-serif;font-weight:700;font-size:.82rem;
+  z-index:2000;opacity:0;transition:.3s;text-shadow:none;box-shadow:0 10px 30px rgba(0,0,0,.35)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-@media(max-width:430px){
-  .srow{grid-template-columns:1fr}
-  .tchart{height:88px}
-  .ping{font-size:2.4rem}
-  .pots{grid-template-columns:1fr}
-  .pot.wide{grid-column:auto}
+@media(max-width:640px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .tile:nth-child(3){border-inline-start:none}
+  .tile{border-top:1px solid var(--line)}
+  .tile:nth-child(-n+2){border-top:none}
+  .btn-solid,.btn-line,.btn-gold{padding:15px 20px;font-size:.86rem}
+  .brand h1{font-size:1.2rem}
+  .live{font-size:.95rem}
+  .live i{width:12px;height:12px}
+  .chart-axis{font-size:.48rem}
 }
 </style>
 </head>
@@ -202,163 +271,109 @@ body{
 <div class="wrap">
 
   <header class="topbar">
-    <span class="sq orange"><svg viewBox="0 0 200 100"><path d="M100 32 L95 10 L90 26 C78 28 66 31 56 35 C38 41 20 44 4 52 C14 54 21 60 24 68 C31 63 39 64 45 70 C51 65 59 67 64 76 C71 71 79 75 83 85 C89 80 95 85 100 96 C105 85 111 80 117 85 C121 75 129 71 136 76 C141 67 149 65 155 70 C161 64 169 63 176 68 C179 60 186 54 196 52 C180 44 162 41 144 35 C134 31 122 28 110 26 L105 10 L100 32 Z"/></svg></span>
-    <div class="hgroup">
-      <span class="sq"><span class="livedot"></span></span>
-      <button class="sq" id="bell"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
-      <a class="sq" href="tel:+989391268620"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></a>
+    <div class="brand">
+      <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg"><path d="M100 32 L95 10 L90 26 C78 28 66 31 56 35 C38 41 20 44 4 52 C14 54 21 60 24 68 C31 63 39 64 45 70 C51 65 59 67 64 76 C71 71 79 75 83 85 C89 80 95 85 100 96 C105 85 111 80 117 85 C121 75 129 71 136 76 C141 67 149 65 155 70 C161 64 169 63 176 68 C179 60 186 54 196 52 C180 44 162 41 144 35 C134 31 122 28 110 26 L105 10 L100 32 Z"/></svg>
+      <div>
+        <h1>کمپانی سایبری پهلوان</h1>
+        <small>Pahlevan COMPANY Security Services</small>
+      </div>
     </div>
+    {{ if .enabled }}
+      {{ if .isOnline }}<div class="live on"><i></i>Online</div>
+      {{ else }}<div class="live off"><i></i>Online</div>{{ end }}
+    {{ else }}<div class="live dead"><i></i>Offline</div>{{ end }}
   </header>
 
-  <section class="srow">
-    <div class="scard">
-      <div class="bars" id="bars-dl"></div>
-      <div class="stxt">peak <b>{{ .download }}</b> download · last 22 readings</div>
+  <div class="loc-wrap">
+    <span class="loc-pill">
+      <span class="flag-de"></span>
+      لوکیشن: ثابت کشور آلمان
+    </span>
+  </div>
+
+  <section class="hero">
+    <div class="kicker">COMPANY PAHLEVAN</div>
+    <div class="bat-hero">
+      <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg"><path d="M100 32 L95 10 L90 26 C78 28 66 31 56 35 C38 41 20 44 4 52 C14 54 21 60 24 68 C31 63 39 64 45 70 C51 65 59 67 64 76 C71 71 79 75 83 85 C89 80 95 85 100 96 C105 85 111 80 117 85 C121 75 129 71 136 76 C141 67 149 65 155 70 C161 64 169 63 176 68 C179 60 186 54 196 52 C180 44 162 41 144 35 C134 31 122 28 110 26 L105 10 L100 32 Z"/></svg>
     </div>
-    <div class="scard">
-      <div class="bars" id="bars-up"></div>
-      <div class="stxt">peak <b>{{ .upload }}</b> upload · last 22 readings</div>
+    {{ if .subTitle }}<h2>{{ .subTitle }}</h2>{{ end }}
+    <div class="mail">{{ range $i, $e := .emails }}{{ if eq $i 0 }}{{ $e }}{{ end }}{{ end }}</div>
+    <div class="badges">
+      {{ if .enabled }}
+        <span class="badge badge-expire" id="expire-badge">انقضا: <span class="datetime-value" data-s="{{ .expire }}">-</span></span>
+      {{ else }}
+        <span class="badge badge-expire expired">انقضا: منقضی شده</span>
+      {{ end }}
+      <span class="badge badge-connect">آخرین اتصال: <span class="datetime-value" data-ms="{{ .lastOnline }}">-</span></span>
     </div>
   </section>
 
-  <div class="tabbar">
-    <button class="titem active" data-tab="t1">
-      <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      <span class="lbl">کانفیگ‌ها</span><span class="cnt" id="cfg-count">0</span>
-    </button>
-    <button class="titem" data-tab="t2">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-      <span class="lbl">دسترسی سریع</span>
-    </button>
-    <button class="titem" data-tab="t3">
-      <svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
-      <span class="lbl">اطلاعات</span>
-    </button>
+  <div class="stats">
+    <div class="tile"><b>{{ if eq .totalByte 0 }}∞{{ else }}{{ .total }}{{ end }}</b><svg class="spark" viewBox="0 0 60 22" preserveAspectRatio="none"></svg><span>حجم کل</span></div>
+    <div class="tile"><b>{{ .used }}</b><svg class="spark" viewBox="0 0 60 22" preserveAspectRatio="none"></svg><span>مصرف شده</span></div>
+    <div class="tile y"><b>{{ .remained }}</b><svg class="spark" viewBox="0 0 60 22" preserveAspectRatio="none"></svg><span>باقیمانده</span></div>
+    <div class="tile"><b>{{ .download }}</b><svg class="spark" viewBox="0 0 60 22" preserveAspectRatio="none"></svg><span>دانلود</span></div>
   </div>
 
-  <div class="tabpane active" id="t1">
-
-    <div class="sechead">
-      <h2>کانفیگ‌ها</h2>
-      <span class="cnt2" id="cfg-count2">0</span>
-      <span class="spacer"></span>
-      <button class="btn-dark" id="copy-all">کپی همه</button>
-      <a class="btn-orange" href="v2rayng://install-sub?url={{ .subUrl }}&name=PahlevanCyber">افزودن به کلاینت</a>
+  <section class="traffic">
+    <div class="lbl">
+      <span>باقیمانده: <b>{{ .remained }}</b></span>
+      <span>مصرف شده: <i>{{ .used }}</i></span>
     </div>
+    <div class="track-glass">
+      <div class="blocks" id="blocks"></div>
+      <div class="neon-sweep"></div>
+    </div>
+  </section>
 
-    <!-- کارت حساب کاربری -->
-    <div class="tcard">
-      <div class="thead">
-        <span class="flag">🇩🇪</span>
-        <div class="tname">
-          <b>{{ range $i, $e := .emails }}{{ if eq $i 0 }}{{ $e }}{{ end }}{{ end }}</b>
-          <span>Frankfurt Am Main, Germany · Pahlevan Cyber</span>
+  <button class="btn-gold" id="copy-all">کپی همه کانفیگ‌ها</button>
+
+  <section class="panel" style="margin-top:26px">
+    <div class="panel-title">نمودار مصرف روزانه</div>
+    <div class="chart">
+      <svg viewBox="0 0 350 120" preserveAspectRatio="none" id="chart-svg"></svg>
+    </div>
+    <div class="chart-axis" id="chart-axis"></div>
+    <div class="chart-legend">
+      <span><span class="dot used"></span>مصرف روزانه</span>
+      <span><span class="dot avg"></span>میانگین ۷ روز</span>
+    </div>
+  </section>
+
+  {{ if .announce }}<section class="panel" style="border-inline-start:3px solid var(--yellow)">📢 {{ .announce }}</section>{{ end }}
+
+  <section class="panel">
+    <div class="panel-title">کانفیگ‌های شما</div>
+    <div class="configs">
+      {{ range $i, $link := .links }}
+      <div class="row">
+        <div class="idx"></div>
+        <div class="meta">
+          <div class="name">{{ index $.emails $i }}</div>
+          <div class="proto" data-proto="{{ $link }}">PROTOCOL</div>
         </div>
-        {{ if .enabled }}<div class="tstat"><span class="od"></span>Online</div>
-        {{ else }}<div class="tstat dead"><span class="od"></span>Offline</div>{{ end }}
+        <button class="copy config-copy" data-link="{{ $link }}">کپی</button>
       </div>
-      <div class="tags">
-        <span class="tag">VIP</span>
-        <span class="tag">STEALTH</span>
-        <span class="tag turbo">TURBO</span>
-        <span class="tag outline" id="exp-tag">-</span>
-      </div>
-      <div class="tbody">
-        <div class="tleft">
-          <div class="ping small">{{ if eq .totalByte 0 }}∞{{ else }}{{ .remained }}{{ end }}</div>
-          <div class="ln"><span class="fa">مصرف:</span> {{ .used }}</div>
-          <div class="ln"><span class="fa">انقضا:</span> <span class="datetime-value" data-s="{{ .expire }}">-</span></div>
-        </div>
-        <svg class="tchart" id="acc-chart" viewBox="0 0 220 112" preserveAspectRatio="none"></svg>
-      </div>
-      <div class="tdiv"></div>
-      <div class="tfoot">
-        <span class="amt">{{ .used }} <span>/ {{ if eq .totalByte 0 }}∞{{ else }}{{ .total }}{{ end }}</span></span>
-        <span class="dots" id="acc-dots"></span>
-        <button class="icobtn" data-link="{{ .subUrl }}" title="کپی لینک اشتراک"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
-      </div>
-      <div class="tact">
-        <span class="dl"><span class="ar">↓</span> {{ .download }} &nbsp;<span class="ar">↑</span> {{ .upload }}</span>
-        <span class="spacer"></span>
-        <button class="icobtn" onclick="openQR('{{ .subUrl }}')" title="QR"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14h1M14 20h1M20 20h1"/></svg></button>
-        <a class="icobtn" href="{{ .subClashUrl }}" title="Clash"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-        <a class="icobtn" href="{{ .subJsonUrl }}" title="JSON"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></a>
-      </div>
+      {{ else }}
+      <div class="empty">هیچ کانفیگی یافت نشد.</div>
+      {{ end }}
     </div>
+  </section>
 
-    <!-- کارت هر کانفیگ -->
-    {{ range $i, $link := .links }}
-    <div class="tcard cfg" data-link="{{ $link }}" data-idx="{{ $i }}">
-      <div class="thead">
-        <span class="flag proto" data-icon="{{ $link }}">--</span>
-        <div class="tname">
-          <b>{{ index $.emails $i }}</b>
-          <span class="cfg-sub">Germany · Pahlevan Cyber</span>
-        </div>
-        <div class="tstat"><span class="loadpct">→ 0.0%</span><span class="od"></span>Online</div>
-      </div>
-      <div class="tags">
-        <span class="tag" data-proto="{{ $link }}">PROTOCOL</span>
-        <span class="tag">STEALTH</span>
-        <span class="tag turbo">TURBO</span>
-        <span class="tag outline" data-port="{{ $link }}">----</span>
-      </div>
-      <div class="tbody">
-        <div class="tleft">
-          <div class="ping"><span class="pingv">0</span><small> ms</small></div>
-          <div class="ln cfg-net">TCP · real</div>
-          <div class="ln cfg-host">-</div>
-        </div>
-        <svg class="tchart spark" viewBox="0 0 220 112" preserveAspectRatio="none"></svg>
-      </div>
-      <div class="tdiv"></div>
-      <div class="tfoot">
-        <span class="amt">CONFIG <span>#<span class="cfgn">0</span></span></span>
-        <span class="dots cfg-dots"></span>
-        <button class="icobtn cfg-copy" data-link="{{ $link }}" title="کپی"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
-      </div>
-      <div class="tact">
-        <span class="dl"><span class="ar">↓</span> <span class="cfg-dl">0</span> &nbsp;<span class="ar">↑</span> <span class="cfg-ul">0</span></span>
-        <span class="spacer"></span>
-        <button class="icobtn cfg-qr" title="QR"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14h1M14 20h1M20 20h1"/></svg></button>
-      </div>
-    </div>
-    {{ else }}
-    <div class="tcard" style="text-align:center;color:var(--gray);padding:34px">هیچ کانفیگی یافت نشد.</div>
-    {{ end }}
-  </div>
+  <section class="actions">
+    <button class="btn-solid" data-link="{{ .subUrl }}">کپی لینک اشتراک</button>
+    <a class="btn-line" href="v2rayng://install-sub?url={{ .subUrl }}&name=PahlevanCyber">افزودن به V2RayNG</a>
+    <button class="btn-line" onclick="openQR()">نمایش QR Code</button>
+    <a class="btn-line" href="{{ .subClashUrl }}">خروجی Clash</a>
+    <a class="btn-line" href="{{ .subJsonUrl }}">خروجی JSON</a>
+  </section>
 
-  <div class="tabpane" id="t2">
-    <div class="pots">
-      <button class="pot wide" data-link="{{ .subUrl }}">کپی لینک اشتراک</button>
-      <a class="pot" href="v2rayng://install-sub?url={{ .subUrl }}&name=PahlevanCyber">افزودن به V2RayNG</a>
-      <button class="pot" onclick="openQR('{{ .subUrl }}')">نمایش QR Code</button>
-      <a class="pot" href="{{ .subClashUrl }}">خروجی Clash</a>
-      <a class="pot" href="{{ .subJsonUrl }}">خروجی JSON</a>
-    </div>
-  </div>
+  <a href="tel:+989391268620" class="support-btn">
+    تماس مستقیم با پشتیبانی
+    <span class="phone">+98 939 126 8620</span>
+  </a>
 
-  <div class="tabpane" id="t3">
-    <div class="infocard">
-      <div class="iclabel">انقضا</div>
-      <div class="icval gr fa" id="expire-val"><span class="datetime-value" data-s="{{ .expire }}">-</span></div>
-    </div>
-    <div class="infocard">
-      <div class="iclabel">آخرین اتصال</div>
-      <div class="icval gr fa"><span class="datetime-value" data-ms="{{ .lastOnline }}">-</span></div>
-    </div>
-    <div class="infocard">
-      <div class="iclabel">لوکیشن سرور</div>
-      <div class="icval fa">آلمان 🇩🇪 — آیپی ثابت VIP</div>
-    </div>
-    {{ if .announce }}<div class="infocard" style="border-inline-start:3px solid var(--orange)">📢 {{ .announce }}</div>{{ end }}
-    <a href="tel:+989391268620" class="support-btn">
-      تماس مستقیم با پشتیبانی
-      <span class="phone">+98 939 126 8620</span>
-    </a>
-  </div>
-
-  <div class="foot">Create By <b>Parham Pahlevan</b></div>
+  <div class="foot">Create By Parham Pahlevan</div>
 </div>
 
 <div class="overlay" id="qr-modal" onclick="this.style.display='none'">
@@ -377,18 +392,15 @@ body{
 <script>
 var SUB_URL = "{{ .subUrl }}";
 
-function srand(seed){ return function(){ seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }; }
-
 document.querySelectorAll('.datetime-value').forEach(function(el){
   var s = el.getAttribute('data-s'), m = el.getAttribute('data-ms');
   if (s && s !== '0' && s !== '-') {
     var d = new Date(parseInt(s) * 1000);
-    var expired = d < new Date();
-    var txt = d.toLocaleDateString('fa-IR') + ' ' + d.toLocaleTimeString('fa-IR', {hour:'2-digit', minute:'2-digit'});
-    el.textContent = txt;
-    var tag = document.getElementById('exp-tag');
-    if (tag && !tag.dataset.filled) { tag.textContent = d.toLocaleDateString('fa-IR'); tag.dataset.filled = '1'; }
-    if (expired) { el.style.color = '#ff6b6b'; var t2 = document.getElementById('exp-tag'); if (t2) t2.style.color = '#ff6b6b'; }
+    var now = new Date();
+    var expired = d < now;
+    el.textContent = d.toLocaleDateString('fa-IR') + ' ' + d.toLocaleTimeString('fa-IR', {hour:'2-digit', minute:'2-digit'});
+    var eb = document.getElementById('expire-badge');
+    if (eb && expired) eb.classList.add('expired');
   } else if (m && m !== '0') {
     var dt = new Date(parseInt(m)), min = Math.floor((Date.now() - dt) / 60000);
     if (min < 1) el.textContent = 'همین الان';
@@ -404,43 +416,93 @@ if (rd) {
   used = parseInt(rd.getAttribute('data-up')) + parseInt(rd.getAttribute('data-down'));
   total = parseInt(rd.getAttribute('data-total'));
 }
-
-/* نوار نقطه‌چین حساب */
-(function(){
-  var box = document.getElementById('acc-dots');
-  if (!box) return;
-  var N = 34, on = total > 0 ? Math.round((used / total) * N) : 0;
-  for (var i = 0; i < N; i++) box.appendChild(Object.assign(document.createElement('i'), {className: i < on ? 'on' : ''}));
-})();
-
-/* بارهای بالای صفحه */
-function buildBars(id, seedBase){
-  var box = document.getElementById(id);
-  if (!box) return;
-  var r = srand(seedBase);
-  for (var i = 0; i < 22; i++) {
-    var h = i < 4 ? (30 + r() * 14) : (3 + r() * 8);
-    var b = document.createElement('i');
-    b.style.height = h + 'px';
-    if (i >= 4) b.style.background = '#3a3733';
-    box.appendChild(b);
-  }
+var SEG = 20;
+var usedCount = total > 0 ? Math.min(Math.round((used / total) * SEG), SEG) : 0;
+var blocksEl = document.getElementById('blocks');
+for (var i = 0; i < SEG; i++) {
+  var s = document.createElement('span');
+  s.className = i < usedCount ? 'used' : 'rem';
+  blocksEl.appendChild(s);
 }
-buildBars('bars-dl', (used % 97) + 11);
-buildBars('bars-up', (used % 89) + 29);
 
-/* گراف سبز کارت حساب */
-(function(){
-  var svg = document.getElementById('acc-chart');
-  if (!svg) return;
-  var W = 220, H = 112, n = 30, r = srand((used % 71) + 5), pts = [];
+document.querySelectorAll('.spark').forEach(function(sv, idx){
+  var W = 60, H = 22, n = 12;
+  var seed = (used || 42) + idx * 131 + 7;
+  var pts = [];
   for (var i = 0; i < n; i++) {
-    var spike = (i === 12 || i === 26) ? (0.5 + r() * 0.4) : r() * 0.16;
-    pts.push([i * (W / (n - 1)), H - 8 - spike * (H - 20)]);
+    seed = (seed * 9301 + 49297) % 233280;
+    var r = seed / 233280;
+    var y = H - 3 - r * (H - 6);
+    var x = i * (W / (n - 1));
+    pts.push([x, y]);
   }
   var d = 'M' + pts.map(function(p){ return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L');
-  svg.innerHTML = '<path d="' + d + ' L' + W + ' ' + H + ' L0 ' + H + ' Z" fill="rgba(70,209,107,.10)" stroke="none"/>' +
-    '<path d="' + d + '" fill="none" stroke="#46d16b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 5px rgba(70,209,107,.5))"/>';
+  var area = d + ' L' + W + ' ' + H + ' L0 ' + H + ' Z';
+  var last = pts[n - 1];
+  sv.innerHTML =
+    '<path d="' + area + '" fill="rgba(56,189,248,.14)" stroke="none"></path>' +
+    '<path class="drawline" d="' + d + '" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>' +
+    '<circle class="dotend" cx="' + last[0].toFixed(1) + '" cy="' + last[1].toFixed(1) + '" r="2.4" fill="#38bdf8"></circle>';
+});
+
+(function buildChart(){
+  var svg = document.getElementById('chart-svg');
+  var axis = document.getElementById('chart-axis');
+  if (!svg) return;
+
+  var days = 7;
+  var dailyUsed = used / 7;
+  var data = [];
+  var seed = used % 97 || 42;
+  for (var i = 0; i < days; i++) {
+    seed = (seed * 9301 + 49297) % 233280;
+    var rand = seed / 233280;
+    var val = dailyUsed * (0.5 + rand * 1.2);
+    if (used === 0) val = 0;
+    data.push(Math.max(val, 0));
+  }
+
+  var max = Math.max.apply(null, data) || 1;
+  var W = 350, H = 120, pad = 10;
+  var barW = (W - pad * 2) / days - 6;
+  var avg = used / 7;
+  var avgY = H - pad - (avg / max) * (H - pad * 2);
+
+  var html = '';
+  html += '<line x1="' + pad + '" y1="' + avgY + '" x2="' + (W - pad) + '" y2="' + avgY + '" stroke="#ffd60a" stroke-width="1" stroke-dasharray="4,3" opacity="0.7"/>';
+  html += '<text x="' + (W - pad + 4) + '" y="' + (avgY - 4) + '" fill="#ffd60a" font-size="9" font-family="Playfair Display">AVG</text>';
+
+  for (var j = 0; j < days; j++) {
+    var h = (data[j] / max) * (H - pad * 2);
+    var x = pad + j * ((W - pad * 2) / days) + 3;
+    var y = H - pad - h;
+    html += '<rect x="' + x + '" y="' + y + '" width="' + barW + '" height="' + h + '" rx="3" fill="rgba(139,15,18,.9)">';
+    html += '<animate attributeName="height" from="0" to="' + h + '" dur="0.8s" fill="freeze"/>';
+    html += '<animate attributeName="y" from="' + (H - pad) + '" to="' + y + '" dur="0.8s" fill="freeze"/>';
+    html += '</rect>';
+    if (h > 16) {
+      var gb = Math.round(data[j] / (1024 * 1024 * 1024) * 10) / 10;
+      var label = gb >= 1 ? gb + 'G' : Math.round(data[j] / (1024 * 1024)) + 'M';
+      html += '<text x="' + (x + barW / 2) + '" y="' + (y - 4) + '" fill="#fff" font-size="9" text-anchor="middle" font-family="Playfair Display">' + label + '</text>';
+    }
+  }
+
+  svg.innerHTML = html;
+
+  var dayNamesFA = ['یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنج‌شنبه','جمعه','شنبه'];
+  var today = new Date().getDay();
+  var names = [];
+  for (var i = 6; i >= 0; i--) {
+    var d = (today - i + 7) % 7;
+    if (i === 0) names.push('امروز');
+    else if (i === 1) names.push('دیروز');
+    else names.push(dayNamesFA[d]);
+  }
+  for (var k = 0; k < days; k++) {
+    var sp = document.createElement('span');
+    sp.textContent = names[k];
+    axis.appendChild(sp);
+  }
 })();
 
 function proto(l){
@@ -453,59 +515,7 @@ function proto(l){
   if (l.indexOf('wg://')===0||l.indexOf('wireguard://')===0) return 'WIREGUARD';
   return 'CONFIG';
 }
-function getPort(l){ var m = l.match(/@[^:\/]+:(\d{2,5})/); return m ? m[1] : '443'; }
-function getHost(l){ var m = l.match(/@([^:\/]+):/); return m ? m[1] : 'server'; }
-function getNet(l){ var m = l.match(/[?&]type=([^&]+)/); return m ? m[1].toUpperCase() : 'TCP'; }
-
-/* پر کردن کارت‌های کانفیگ */
-var cfgCards = document.querySelectorAll('.cfg');
-document.getElementById('cfg-count').textContent = cfgCards.length;
-document.getElementById('cfg-count2').textContent = cfgCards.length;
-cfgCards.forEach(function(card, idx){
-  var link = card.getAttribute('data-link');
-  var r = srand(idx * 977 + 31);
-  card.querySelector('[data-icon]').textContent = proto(link).slice(0, 2);
-  card.querySelector('[data-proto]').textContent = proto(link);
-  card.querySelector('[data-port]').textContent = getPort(link);
-  card.querySelector('.cfgn').textContent = (idx + 1 < 10 ? '0' : '') + (idx + 1);
-  card.querySelector('.pingv').textContent = Math.floor(18 + r() * 110);
-  card.querySelector('.cfg-net').textContent = getNet(link) + ' · ' + proto(link);
-  card.querySelector('.cfg-host').textContent = getHost(link);
-  card.querySelector('.loadpct').textContent = (r() > .5 ? '↓ ' : '→ ') + (r() * 15).toFixed(1) + '%';
-  card.querySelector('.cfg-dl').textContent = (r() * 9).toFixed(1) + ' GB';
-  card.querySelector('.cfg-ul').textContent = (r() * 900).toFixed(0) + ' MB';
-  var sub = card.querySelector('.cfg-sub');
-  if (sub) sub.textContent = 'Frankfurt, Germany · ' + getNet(link);
-  /* dots */
-  var dots = card.querySelector('.cfg-dots');
-  var on = Math.floor(r() * 34);
-  for (var i = 0; i < 34; i++) dots.appendChild(Object.assign(document.createElement('i'), {className: i < on ? 'on' : ''}));
-  /* spark */
-  var svg = card.querySelector('.spark');
-  var W = 220, H = 112, n = 26, pts = [];
-  for (var j = 0; j < n; j++) {
-    var spike = r() > .82 ? (0.45 + r() * 0.45) : r() * 0.18;
-    pts.push([j * (W / (n - 1)), H - 8 - spike * (H - 20)]);
-  }
-  var d = 'M' + pts.map(function(p){ return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L');
-  svg.innerHTML = '<path d="' + d + ' L' + W + ' ' + H + ' L0 ' + H + ' Z" fill="rgba(70,209,107,.10)" stroke="none"/>' +
-    '<path d="' + d + '" fill="none" stroke="#46d16b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
-  /* qr button */
-  card.querySelector('.cfg-qr').addEventListener('click', function(){ openQR(link); });
-});
-
-/* تب‌ها */
-document.querySelectorAll('.titem').forEach(function(tb){
-  tb.addEventListener('click', function(){
-    document.querySelectorAll('.titem').forEach(function(x){ x.classList.remove('active'); });
-    document.querySelectorAll('.tabpane').forEach(function(x){ x.classList.remove('active'); });
-    tb.classList.add('active');
-    document.getElementById(tb.getAttribute('data-tab')).classList.add('active');
-  });
-});
-document.getElementById('bell').addEventListener('click', function(){
-  document.querySelector('[data-tab="t3"]').click();
-});
+document.querySelectorAll('[data-proto]').forEach(function(el){ el.textContent = proto(el.getAttribute('data-proto')); });
 
 function toast(msg){
   var t = document.getElementById('toast');
@@ -523,23 +533,19 @@ function copyText(text, msg){
   }
 }
 document.querySelectorAll('[data-link]').forEach(function(b){
-  if (b.classList.contains('cfg')) return;
   b.addEventListener('click', function(e){ e.preventDefault(); copyText(this.getAttribute('data-link')); });
-});
-document.querySelectorAll('.cfg-copy').forEach(function(b){
-  b.addEventListener('click', function(e){ e.stopPropagation(); copyText(this.getAttribute('data-link')); });
 });
 
 document.getElementById('copy-all').addEventListener('click', function(){
   var all = [];
-  document.querySelectorAll('.cfg').forEach(function(c){ all.push(c.getAttribute('data-link')); });
+  document.querySelectorAll('.config-copy').forEach(function(b){ all.push(b.getAttribute('data-link')); });
   if (all.length) copyText(all.join('\n'), 'همه کانفیگ‌ها کپی شد!');
   else toast('کانفیگی یافت نشد!');
 });
 
-function openQR(url){
+function openQR(){
   document.getElementById('qr-modal').style.display = 'flex';
-  new QRious({ element: document.getElementById('qr-canvas'), value: url, size: 240, background:'#ffffff', foreground:'#14110e', level:'H' });
+  new QRious({ element: document.getElementById('qr-canvas'), value: SUB_URL, size: 240, background:'#ffffff', foreground:'#141414', level:'H' });
 }
 </script>
 </body>
