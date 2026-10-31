@@ -143,41 +143,20 @@ html.light .theme-btn .ic-moon{display:block}
 .big-value b{font-family:var(--lux);font-weight:700;font-size:2.7rem;line-height:1;color:var(--mint);text-shadow:0 0 22px rgba(126,226,168,.35)}
 .big-value i{font-style:normal;font-size:.9rem;color:var(--muted2);font-family:var(--lux)}
 
-/* ✅ جمع کل مصرف تا الان */
-.sub-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 2px 16px}
+.sub-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 2px 4px}
 .sub-row span{font-size:.78rem;color:var(--muted)}
 .sub-row b{font-family:var(--lux);font-weight:600;font-size:1.08rem;color:var(--red);direction:ltr}
 
-.chart{position:relative;height:175px;margin-top:6px}
-.avgline{position:absolute;left:0;right:0;border-top:1px dashed var(--mint-dim);z-index:2;pointer-events:none;opacity:.8}
-.avgline span{position:absolute;left:0;top:-15px;font-size:.56rem;color:var(--mint);letter-spacing:.1em}
-.bars{position:absolute;inset:0;display:flex;align-items:flex-end;gap:5px;padding:0 2px;z-index:1}
-.bar{
-  flex:1;min-width:0;height:0%;
-  border-radius:5px 5px 2px 2px;
-  background:linear-gradient(180deg,var(--mint-hi) 0%,#6cd99a 55%,rgba(108,217,154,.28) 100%);
-  transition:height .55s cubic-bezier(.2,.7,.3,1),filter .2s,box-shadow .2s;
-  cursor:pointer;
-}
-.bar.low{background:linear-gradient(180deg,#e39aa2 0%,#c06470 55%,rgba(192,100,112,.3) 100%)}
-.bar:hover{filter:brightness(1.15)}
-.bar.sel{filter:brightness(1.35);box-shadow:0 0 0 1px var(--mint),0 0 16px rgba(126,226,168,.45)}
-.bar.low.sel{box-shadow:0 0 0 1px var(--red),0 0 16px rgba(212,115,126,.45)}
-.chart-axis{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-size:.62rem;color:var(--muted2)}
-.chart-axis .hint{color:var(--muted);font-size:.64rem;text-align:center;flex:1;transition:color .2s}
-.chart-axis .hint.on{color:var(--mint)}
-
+/* ✅ فقط سه کاشی پایین */
 .card-stats{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
-  border-top:1px solid var(--line-w);margin-top:20px;padding-top:16px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+  border-top:1px solid var(--line-w);margin-top:18px;padding-top:16px;
 }
 .cs{text-align:center;min-width:0}
-.cs span{display:block;font-size:.64rem;color:var(--muted);margin-bottom:7px}
-.cs b{font-family:var(--lux);font-weight:600;font-size:1.02rem;color:var(--text);direction:ltr;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cs span{display:block;font-size:.66rem;color:var(--muted);margin-bottom:7px}
+.cs b{font-family:var(--lux);font-weight:600;font-size:1.05rem;color:var(--text);direction:ltr;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cs.mint b{color:var(--mint);text-shadow:0 0 12px rgba(126,226,168,.3)}
 .cs.red b{color:var(--red)}
-.cs.today b{color:var(--mint)}
-.cs.dim b{color:var(--muted)}
 
 .traffic-card{padding:16px 18px}
 .t-in{display:flex;align-items:center;gap:14px}
@@ -295,10 +274,8 @@ html.light .card{
   border-color:rgba(0,0,0,.07);
   box-shadow:0 16px 40px rgba(20,30,25,.09), inset 0 1px 0 rgba(255,255,255,.7);
 }
-html.light .bar{background:linear-gradient(180deg,#2fbf71 0%,#129a55 55%,rgba(18,154,85,.25) 100%)}
-html.light .bar.low{background:linear-gradient(180deg,#e08a93 0%,#c23b4a 55%,rgba(194,59,74,.25) 100%)}
 html.light .big-value b{text-shadow:0 0 18px rgba(12,155,87,.28)}
-html.light .cs.mint b,html.light .cs.today b{text-shadow:0 0 10px rgba(12,155,87,.22)}
+html.light .cs.mint b{text-shadow:0 0 10px rgba(12,155,87,.22)}
 html.light .s-dot,html.light .t-dot{box-shadow:0 0 8px rgba(12,155,87,.55)}
 html.light .blocks{background:#e7ebe7;border-color:rgba(0,0,0,.09);box-shadow:inset 0 1px 3px rgba(0,0,0,.14)}
 html.light .blocks span.rem{background:linear-gradient(180deg,#34c17b,#0e8a4d)}
@@ -320,10 +297,8 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
 @media(max-width:640px){
   .big-value b{font-size:2.15rem}
   .card{padding:16px}
-  .card-stats b{font-size:.85rem}
-  .card-stats span{font-size:.58rem}
-  .chart{height:150px}
-  .bars{gap:3px}
+  .card-stats b{font-size:.9rem}
+  .card-stats span{font-size:.6rem}
   .wordmark b{font-size:.85rem}
   .wordmark small{font-size:.46rem}
   .t-stat{min-width:60px}
@@ -331,7 +306,8 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
 }
 @media(max-width:380px){
   .big-value b{font-size:1.8rem}
-  .card-stats b{font-size:.72rem}
+  .card-stats b{font-size:.76rem}
+  .card-stats span{font-size:.54rem}
   .tg-handle{display:none}
 }
 @media(prefers-reduced-motion:reduce){
@@ -415,33 +391,21 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
       {{ end }}
     </div>
 
-    <!-- ✅ جمع دانلود شما -->
     <div class="big-row">
       <span class="big-label">جمع دانلود شما</span>
       <span class="big-value"><b id="big-num">0</b><i id="big-unit">GB</i></span>
     </div>
 
-    <!-- ✅ جمع کامل مصرف تا الان -->
     <div class="sub-row">
       <span>جمع کامل مصرف تا الان</span>
       <b id="total-used">0 B</b>
     </div>
 
-    <div class="chart">
-      <div class="avgline" id="avgline"><span>میانگین</span></div>
-      <div class="bars" id="bars"></div>
-    </div>
-    <div class="chart-axis">
-      <span id="ax-start">۷ روز پیش</span>
-      <span class="hint" id="chart-hint">برای جزئیات، یه ستون رو بزن</span>
-      <span id="ax-end">امروز</span>
-    </div>
-
+    <!-- ✅ فقط سه کاشی: باقی‌مانده / مصرف شده / حجم کل -->
     <div class="card-stats">
       <div class="cs mint"><span>باقی‌مانده</span><b>{{ .remained }}</b></div>
       <div class="cs red"><span>مصرف شده</span><b>{{ .used }}</b></div>
       <div class="cs"><span>حجم کل</span><b>{{ if eq .totalByte 0 }}∞{{ else }}{{ .total }}{{ end }}</b></div>
-      <div class="cs today"><span>دانلود امروز</span><b id="tile-today">-</b></div>
     </div>
   </section>
 
@@ -523,7 +487,6 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 <script>
 var SUB_URL = "{{ .subUrl }}";
-var faD = function(s){ return String(s).replace(/\d/g, function(d){ return '۰۱۳۴۵۶۷۸۹'[d]; }); };
 
 (function(){
   var root = document.documentElement;
@@ -560,6 +523,7 @@ if (rd) {
   total = parseInt(rd.getAttribute('data-total')) || 0;
 }
 
+/* نوار ترافیک */
 var SEG = 20;
 var usedCount = total > 0 ? Math.min(Math.round((used / total) * SEG), SEG) : 0;
 var blocksEl = document.getElementById('blocks');
@@ -568,26 +532,6 @@ for (var i = 0; i < SEG; i++) {
   s.className = i < usedCount ? 'used' : 'rem';
   blocksEl.appendChild(s);
 }
-
-/* نمودار دانلود روزانه (۷ روز) */
-var daily = [], names7 = [];
-(function(){
-  function w(seed, n){
-    var s = seed || 42, a = [], i, t = 0;
-    for (i = 0; i < n; i++){ s = (s * 9301 + 49297) % 233280; a.push(.35 + s / 233280); }
-    t = a.reduce(function(x,y){ return x + y; }, 0);
-    return a.map(function(x){ return x / t; });
-  }
-  daily = w((downOnly % 97) || 42, 7).map(function(x){ return downOnly * x; });
-  var dn = ['یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنج‌شنبه','جمعه','شنبه'];
-  var td = new Date().getDay();
-  for (var i = 6; i >= 0; i--){
-    var d = (td - i + 7) % 7;
-    if (i === 0) names7.push('امروز');
-    else if (i === 1) names7.push('دیروز');
-    else names7.push(dn[d]);
-  }
-})();
 
 function fmtLat(b){
   var GB = 1073741824, MB = 1048576;
@@ -598,53 +542,13 @@ function fmtLat(b){
 }
 function latStr(b){ var f = fmtLat(b); return f.v + ' ' + f.u; }
 
-var barsEl = document.getElementById('bars'),
-    avgEl  = document.getElementById('avgline'),
-    hintEl = document.getElementById('chart-hint'),
-    bigN = document.getElementById('big-num'),
-    bigU = document.getElementById('big-unit');
+/* عدد بزرگ = جمع دانلود شما */
+var f = fmtLat(downOnly);
+document.getElementById('big-num').textContent = f.v;
+document.getElementById('big-unit').textContent = f.u;
 
-function render(){
-  var max = Math.max.apply(null, daily.concat([1]));
-  barsEl.innerHTML = '';
-  daily.forEach(function(v, i){
-    var b = document.createElement('div');
-    b.className = 'bar' + (downOnly > 0 && v < .18 * max ? ' low' : '');
-    b.dataset.i = i;
-    b.style.height = '0%';
-    barsEl.appendChild(b);
-    setTimeout(function(){
-      b.style.height = Math.max(v / max * 100, downOnly > 0 ? 4 : 5) + '%';
-    }, 60 + i * 16);
-  });
-  var avg = daily.reduce(function(a,b){ return a + b; }, 0) / daily.length;
-  avgEl.style.bottom = Math.max(avg / max * 100, 2) + '%';
-
-  /* ✅ عدد بزرگ = جمع دانلود شما */
-  var f = fmtLat(downOnly);
-  bigN.textContent = f.v;
-  bigU.textContent = f.u;
-
-  /* ✅ جمع کامل مصرف تا الان */
-  document.getElementById('total-used').textContent = latStr(used);
-
-  /* ✅ کاشی پایین = دانلود امروز = همان میلهٔ امروز نمودار */
-  document.getElementById('tile-today').textContent = latStr(daily[6]);
-
-  hintEl.textContent = 'برای جزئیات، یه ستون رو بزن';
-  hintEl.classList.remove('on');
-}
-render();
-
-barsEl.addEventListener('click', function(e){
-  var b = e.target.closest('.bar');
-  if (!b) return;
-  barsEl.querySelectorAll('.sel').forEach(function(x){ x.classList.remove('sel'); });
-  b.classList.add('sel');
-  var i = +b.dataset.i;
-  hintEl.textContent = names7[i] + ' · ' + latStr(daily[i]) + ' دانلود';
-  hintEl.classList.add('on');
-});
+/* جمع کامل مصرف تا الان */
+document.getElementById('total-used').textContent = latStr(used);
 
 function proto(l){
   if (l.indexOf('vless://')===0) return 'VLESS';
