@@ -137,11 +137,16 @@ html.light .theme-btn .ic-moon{display:block}
 .pill-expire.expired svg{fill:var(--red)}
 @keyframes expirewarn{0%,100%{box-shadow:0 0 8px rgba(212,115,126,.2)}50%{box-shadow:0 0 18px rgba(212,115,126,.5)}}
 
-.big-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:20px 2px 8px}
+.big-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:20px 2px 6px}
 .big-label{font-size:.95rem;color:var(--text);opacity:.88}
 .big-value{direction:ltr;display:flex;align-items:baseline;gap:6px}
 .big-value b{font-family:var(--lux);font-weight:700;font-size:2.7rem;line-height:1;color:var(--mint);text-shadow:0 0 22px rgba(126,226,168,.35)}
 .big-value i{font-style:normal;font-size:.9rem;color:var(--muted2);font-family:var(--lux)}
+
+/* ✅ جمع کل مصرف تا الان */
+.sub-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 2px 16px}
+.sub-row span{font-size:.78rem;color:var(--muted)}
+.sub-row b{font-family:var(--lux);font-weight:600;font-size:1.08rem;color:var(--red);direction:ltr}
 
 .chart{position:relative;height:175px;margin-top:6px}
 .avgline{position:absolute;left:0;right:0;border-top:1px dashed var(--mint-dim);z-index:2;pointer-events:none;opacity:.8}
@@ -171,6 +176,7 @@ html.light .theme-btn .ic-moon{display:block}
 .cs b{font-family:var(--lux);font-weight:600;font-size:1.02rem;color:var(--text);direction:ltr;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cs.mint b{color:var(--mint);text-shadow:0 0 12px rgba(126,226,168,.3)}
 .cs.red b{color:var(--red)}
+.cs.today b{color:var(--mint)}
 .cs.dim b{color:var(--muted)}
 
 .traffic-card{padding:16px 18px}
@@ -292,7 +298,7 @@ html.light .card{
 html.light .bar{background:linear-gradient(180deg,#2fbf71 0%,#129a55 55%,rgba(18,154,85,.25) 100%)}
 html.light .bar.low{background:linear-gradient(180deg,#e08a93 0%,#c23b4a 55%,rgba(194,59,74,.25) 100%)}
 html.light .big-value b{text-shadow:0 0 18px rgba(12,155,87,.28)}
-html.light .cs.mint b{text-shadow:0 0 10px rgba(12,155,87,.22)}
+html.light .cs.mint b,html.light .cs.today b{text-shadow:0 0 10px rgba(12,155,87,.22)}
 html.light .s-dot,html.light .t-dot{box-shadow:0 0 8px rgba(12,155,87,.55)}
 html.light .blocks{background:#e7ebe7;border-color:rgba(0,0,0,.09);box-shadow:inset 0 1px 3px rgba(0,0,0,.14)}
 html.light .blocks span.rem{background:linear-gradient(180deg,#34c17b,#0e8a4d)}
@@ -409,9 +415,16 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
       {{ end }}
     </div>
 
+    <!-- ✅ جمع دانلود شما -->
     <div class="big-row">
-      <span class="big-label">جمع کل دانلود</span>
+      <span class="big-label">جمع دانلود شما</span>
       <span class="big-value"><b id="big-num">0</b><i id="big-unit">GB</i></span>
+    </div>
+
+    <!-- ✅ جمع کامل مصرف تا الان -->
+    <div class="sub-row">
+      <span>جمع کامل مصرف تا الان</span>
+      <b id="total-used">0 B</b>
     </div>
 
     <div class="chart">
@@ -428,7 +441,7 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
       <div class="cs mint"><span>باقی‌مانده</span><b>{{ .remained }}</b></div>
       <div class="cs red"><span>مصرف شده</span><b>{{ .used }}</b></div>
       <div class="cs"><span>حجم کل</span><b>{{ if eq .totalByte 0 }}∞{{ else }}{{ .total }}{{ end }}</b></div>
-      <div class="cs dim"><span>دانلود</span><b>{{ .download }}</b></div>
+      <div class="cs today"><span>دانلود امروز</span><b id="tile-today">-</b></div>
     </div>
   </section>
 
@@ -510,7 +523,7 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 <script>
 var SUB_URL = "{{ .subUrl }}";
-var faD = function(s){ return String(s).replace(/\d/g, function(d){ return '۰۱۲۳۴۵۶۷۸۹'[d]; }); };
+var faD = function(s){ return String(s).replace(/\d/g, function(d){ return '۰۱۳۴۵۶۷۸۹'[d]; }); };
 
 (function(){
   var root = document.documentElement;
@@ -542,9 +555,9 @@ document.querySelectorAll('.datetime-value').forEach(function(el){
 var rd = document.getElementById('raw-data');
 var used = 0, total = 0, downOnly = 0;
 if (rd) {
-  used = parseInt(rd.getAttribute('data-up')) + parseInt(rd.getAttribute('data-down'));
+  used = (parseInt(rd.getAttribute('data-up')) || 0) + (parseInt(rd.getAttribute('data-down')) || 0);
   downOnly = parseInt(rd.getAttribute('data-down')) || 0;
-  total = parseInt(rd.getAttribute('data-total'));
+  total = parseInt(rd.getAttribute('data-total')) || 0;
 }
 
 var SEG = 20;
@@ -556,6 +569,7 @@ for (var i = 0; i < SEG; i++) {
   blocksEl.appendChild(s);
 }
 
+/* نمودار دانلود روزانه (۷ روز) */
 var daily = [], names7 = [];
 (function(){
   function w(seed, n){
@@ -575,14 +589,6 @@ var daily = [], names7 = [];
   }
 })();
 
-function fmtFa(b){
-  var GB = 1073741824, MB = 1048576, KB = 1024;
-  if (!b || b <= 0) return '۰ بایت';
-  if (b >= GB) return faD((b/GB).toLocaleString('en-US',{maximumFractionDigits:2})) + ' گیگابایت';
-  if (b >= MB) return faD(Math.round(b/MB).toLocaleString('en-US')) + ' مگابایت';
-  if (b >= KB) return faD(Math.round(b/KB).toLocaleString('en-US')) + ' کیلوبایت';
-  return faD(Math.round(b)) + ' بایت';
-}
 function fmtLat(b){
   var GB = 1073741824, MB = 1048576;
   if (b >= GB) return { v:(b/GB).toFixed(b/GB >= 10 ? 1 : 2), u:'GB' };
@@ -590,6 +596,7 @@ function fmtLat(b){
   if (b >= 1024) return { v:Math.round(b/1024), u:'KB' };
   return { v:Math.round(b), u:'B' };
 }
+function latStr(b){ var f = fmtLat(b); return f.v + ' ' + f.u; }
 
 var barsEl = document.getElementById('bars'),
     avgEl  = document.getElementById('avgline'),
@@ -612,11 +619,18 @@ function render(){
   });
   var avg = daily.reduce(function(a,b){ return a + b; }, 0) / daily.length;
   avgEl.style.bottom = Math.max(avg / max * 100, 2) + '%';
-  
+
+  /* ✅ عدد بزرگ = جمع دانلود شما */
   var f = fmtLat(downOnly);
   bigN.textContent = f.v;
   bigU.textContent = f.u;
-  
+
+  /* ✅ جمع کامل مصرف تا الان */
+  document.getElementById('total-used').textContent = latStr(used);
+
+  /* ✅ کاشی پایین = دانلود امروز = همان میلهٔ امروز نمودار */
+  document.getElementById('tile-today').textContent = latStr(daily[6]);
+
   hintEl.textContent = 'برای جزئیات، یه ستون رو بزن';
   hintEl.classList.remove('on');
 }
@@ -628,7 +642,7 @@ barsEl.addEventListener('click', function(e){
   barsEl.querySelectorAll('.sel').forEach(function(x){ x.classList.remove('sel'); });
   b.classList.add('sel');
   var i = +b.dataset.i;
-  hintEl.textContent = names7[i] + ' · ' + fmtFa(daily[i]) + ' دانلود';
+  hintEl.textContent = names7[i] + ' · ' + latStr(daily[i]) + ' دانلود';
   hintEl.classList.add('on');
 });
 
