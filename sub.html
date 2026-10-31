@@ -43,7 +43,6 @@ body{
 button,a{font-family:var(--sans);-webkit-tap-highlight-color:transparent}
 button:focus-visible,a:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
 
-/* ===== TOPBAR ===== */
 .topbar{
   position:sticky;top:0;z-index:60;
   display:flex;justify-content:space-between;align-items:center;gap:12px;
@@ -83,7 +82,6 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--mint);outline-offse
 .pill-offline{border-color:rgba(212,115,126,.5);color:var(--red);background:rgba(212,115,126,.08)}
 .pill-offline .dot{background:var(--red);box-shadow:0 0 8px var(--red)}
 
-/* ✅ theme toggle */
 .theme-btn{cursor:pointer}
 .theme-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .theme-btn .ic-moon{display:none}
@@ -93,7 +91,6 @@ html.light .theme-btn .ic-moon{display:block}
 
 .wrap{max-width:760px;margin:0 auto;padding:0 16px 46px;position:relative}
 
-/* ===== HINT LINK ===== */
 .hint-link{
   display:flex;align-items:center;gap:10px;
   margin:20px 4px 16px;
@@ -102,7 +99,6 @@ html.light .theme-btn .ic-moon{display:block}
 .hint-link svg{width:17px;height:17px;stroke:var(--mint);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 .hint-link:hover{filter:brightness(1.2)}
 
-/* ===== HERO / GERMANY VIP ===== */
 .hero{text-align:center;padding:4px 6px 22px}
 .kicker{
   display:flex;align-items:center;justify-content:center;gap:9px;
@@ -123,7 +119,6 @@ html.light .theme-btn .ic-moon{display:block}
 .badges{margin-top:14px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
 .pill-connect svg{fill:var(--mint)}
 
-/* ===== CARDS ===== */
 .card{
   background:linear-gradient(160deg,rgba(18,24,18,.92),rgba(10,14,10,.96));
   border:1px solid var(--line);
@@ -141,16 +136,6 @@ html.light .theme-btn .ic-moon{display:block}
 .pill-expire.expired{border-color:rgba(212,115,126,.55);color:var(--red);background:rgba(212,115,126,.08);animation:expirewarn 1.8s infinite}
 .pill-expire.expired svg{fill:var(--red)}
 @keyframes expirewarn{0%,100%{box-shadow:0 0 8px rgba(212,115,126,.2)}50%{box-shadow:0 0 18px rgba(212,115,126,.5)}}
-
-.seg-row{display:flex;gap:8px;margin-top:18px}
-.seg{
-  padding:9px 20px;border-radius:12px;cursor:pointer;
-  border:1px solid var(--line-w);background:transparent;color:var(--muted);
-  font-size:.78rem;font-weight:700;
-  transition:all .25s ease;
-}
-.seg:hover{color:var(--text)}
-.seg.active{border-color:var(--mint-dim);color:var(--mint);background:var(--mint-ghost);box-shadow:0 0 12px rgba(126,226,168,.12)}
 
 .big-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:20px 2px 8px}
 .big-label{font-size:.95rem;color:var(--text);opacity:.88}
@@ -277,9 +262,6 @@ html.light .theme-btn .ic-moon{display:block}
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-/* =========================================
-   ✅ LIGHT (DAY) THEME
-   ========================================= */
 html.light{
   --bg:#eef1ee;
   --card:#ffffff;
@@ -407,7 +389,6 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
     </div>
   </section>
 
-  <!-- ===== MONITOR CARD ===== -->
   <section class="card" id="monitor">
     <div class="card-head">
       <div class="server">
@@ -428,13 +409,8 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
       {{ end }}
     </div>
 
-    <div class="seg-row">
-      <button class="seg active" id="seg-24">۲۴ ساعت</button>
-      <button class="seg" id="seg-7">۷ روز</button>
-    </div>
-
     <div class="big-row">
-      <span class="big-label" id="big-label">دانلود امروز</span>
+      <span class="big-label">جمع کل دانلود</span>
       <span class="big-value"><b id="big-num">0</b><i id="big-unit">GB</i></span>
     </div>
 
@@ -443,9 +419,9 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
       <div class="bars" id="bars"></div>
     </div>
     <div class="chart-axis">
-      <span id="ax-start">۰۰:۰۰</span>
+      <span id="ax-start">۷ روز پیش</span>
       <span class="hint" id="chart-hint">برای جزئیات، یه ستون رو بزن</span>
-      <span id="ax-end">۲۳:۰۰</span>
+      <span id="ax-end">امروز</span>
     </div>
 
     <div class="card-stats">
@@ -456,7 +432,6 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
     </div>
   </section>
 
-  <!-- ===== TRAFFIC ===== -->
   <section class="card traffic-card">
     <div class="t-in">
       <div class="t-stat red"><span>مصرف شده</span><b>{{ .used }}</b></div>
@@ -465,7 +440,6 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
     </div>
   </section>
 
-  <!-- ===== CONFIGS ===== -->
   <section class="card">
     <div class="card-title"><span class="t-dot"></span>کانفیگ‌های شما</div>
     <div class="configs">
@@ -490,7 +464,6 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
 
   {{ if .announce }}<section class="card announce">📢 {{ .announce }}</section>{{ end }}
 
-  <!-- ===== ACTIONS ===== -->
   <section class="card">
     <div class="card-title"><span class="t-dot"></span>دسترس سریع</div>
     <div class="actions">
@@ -539,7 +512,6 @@ html.light .flag-de{box-shadow:0 0 0 1px rgba(0,0,0,.2)}
 var SUB_URL = "{{ .subUrl }}";
 var faD = function(s){ return String(s).replace(/\d/g, function(d){ return '۰۱۲۳۴۵۶۷۸۹'[d]; }); };
 
-/* ✅ theme toggle (day / night) */
 (function(){
   var root = document.documentElement;
   try { if (localStorage.getItem('pm-theme') === 'light') root.classList.add('light'); } catch(e){}
@@ -549,7 +521,6 @@ var faD = function(s){ return String(s).replace(/\d/g, function(d){ return '۰۱
   });
 })();
 
-/* dates */
 document.querySelectorAll('.datetime-value').forEach(function(el){
   var s = el.getAttribute('data-s'), m = el.getAttribute('data-ms');
   if (s && s !== '0' && s !== '-') {
@@ -568,16 +539,14 @@ document.querySelectorAll('.datetime-value').forEach(function(el){
   } else el.textContent = 'نامحدود';
 });
 
-/* raw bytes */
 var rd = document.getElementById('raw-data');
 var used = 0, total = 0, downOnly = 0;
 if (rd) {
   used = parseInt(rd.getAttribute('data-up')) + parseInt(rd.getAttribute('data-down'));
-  downOnly = parseInt(rd.getAttribute('data-down')) || 0;   /* ✅ فقط دانلود */
+  downOnly = parseInt(rd.getAttribute('data-down')) || 0;
   total = parseInt(rd.getAttribute('data-total'));
 }
 
-/* traffic blocks (کل مصرف) */
 var SEG = 20;
 var usedCount = total > 0 ? Math.min(Math.round((used / total) * SEG), SEG) : 0;
 var blocksEl = document.getElementById('blocks');
@@ -587,8 +556,7 @@ for (var i = 0; i < SEG; i++) {
   blocksEl.appendChild(s);
 }
 
-/* ===== ✅ نمودار: فقط جمع مصرف دانلود روزانه ===== */
-var daily = [], hourly = [], names7 = [];
+var daily = [], names7 = [];
 (function(){
   function w(seed, n){
     var s = seed || 42, a = [], i, t = 0;
@@ -596,12 +564,7 @@ var daily = [], hourly = [], names7 = [];
     t = a.reduce(function(x,y){ return x + y; }, 0);
     return a.map(function(x){ return x / t; });
   }
-  daily = w((downOnly % 97) || 42, 7).map(function(x){ return downOnly * x; });  /* جمع دانلود روزانه */
-  var today = daily[6];
-  var di = [.25,.18,.12,.1,.1,.14,.25,.45,.7,.9,1.05,1.15,1.2,1.1,1,1.05,1.15,1.25,1.3,1.2,1,.8,.55,.35];
-  var hw = w(((downOnly >> 3) % 89) || 17, 24).map(function(x,i){ return x * di[i]; });
-  var t2 = hw.reduce(function(a,b){ return a + b; }, 0);
-  hourly = hw.map(function(x){ return today * x / t2; });   /* دانلود ساعتی امروز */
+  daily = w((downOnly % 97) || 42, 7).map(function(x){ return downOnly * x; });
   var dn = ['یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنج‌شنبه','جمعه','شنبه'];
   var td = new Date().getDay();
   for (var i = 6; i >= 0; i--){
@@ -628,21 +591,16 @@ function fmtLat(b){
   return { v:Math.round(b), u:'B' };
 }
 
-var range = '24h';
 var barsEl = document.getElementById('bars'),
     avgEl  = document.getElementById('avgline'),
     hintEl = document.getElementById('chart-hint'),
-    axS = document.getElementById('ax-start'),
-    axE = document.getElementById('ax-end'),
     bigN = document.getElementById('big-num'),
-    bigU = document.getElementById('big-unit'),
-    bigL = document.getElementById('big-label');
+    bigU = document.getElementById('big-unit');
 
 function render(){
-  var data = range === '24h' ? hourly : daily;
-  var max = Math.max.apply(null, data.concat([1]));
+  var max = Math.max.apply(null, daily.concat([1]));
   barsEl.innerHTML = '';
-  data.forEach(function(v, i){
+  daily.forEach(function(v, i){
     var b = document.createElement('div');
     b.className = 'bar' + (downOnly > 0 && v < .18 * max ? ' low' : '');
     b.dataset.i = i;
@@ -652,53 +610,28 @@ function render(){
       b.style.height = Math.max(v / max * 100, downOnly > 0 ? 4 : 5) + '%';
     }, 60 + i * 16);
   });
-  var avg = data.reduce(function(a,b){ return a + b; }, 0) / data.length;
+  var avg = daily.reduce(function(a,b){ return a + b; }, 0) / daily.length;
   avgEl.style.bottom = Math.max(avg / max * 100, 2) + '%';
-  if (range === '24h') {
-    axS.textContent = '۰۰:۰۰'; axE.textContent = '۲۳:۰۰';
-    var f = fmtLat(daily[6]);
-    bigN.textContent = f.v; bigU.textContent = f.u;
-    bigL.textContent = 'دانلود امروز';
-  } else {
-    axS.textContent = names7[0]; axE.textContent = 'امروز';
-    var f2 = fmtLat(downOnly / 7);
-    bigN.textContent = f2.v; bigU.textContent = f2.u;
-    bigL.textContent = 'میانگین دانلود روزانه';
-  }
+  
+  var f = fmtLat(downOnly);
+  bigN.textContent = f.v;
+  bigU.textContent = f.u;
+  
   hintEl.textContent = 'برای جزئیات، یه ستون رو بزن';
   hintEl.classList.remove('on');
 }
 render();
 
-document.getElementById('seg-24').addEventListener('click', function(){
-  if (range === '24h') return;
-  range = '24h';
-  this.classList.add('active');
-  document.getElementById('seg-7').classList.remove('active');
-  render();
-});
-document.getElementById('seg-7').addEventListener('click', function(){
-  if (range === '7d') return;
-  range = '7d';
-  this.classList.add('active');
-  document.getElementById('seg-24').classList.remove('active');
-  render();
-});
-
-/* tap a bar -> exact download value */
 barsEl.addEventListener('click', function(e){
   var b = e.target.closest('.bar');
   if (!b) return;
   barsEl.querySelectorAll('.sel').forEach(function(x){ x.classList.remove('sel'); });
   b.classList.add('sel');
   var i = +b.dataset.i;
-  var data = range === '24h' ? hourly : daily;
-  var label = range === '24h' ? ('ساعت ' + faD(('0' + i).slice(-2)) + ':۰۰') : names7[i];
-  hintEl.textContent = label + ' · ' + fmtFa(data[i]) + ' دانلود';
+  hintEl.textContent = names7[i] + ' · ' + fmtFa(daily[i]) + ' دانلود';
   hintEl.classList.add('on');
 });
 
-/* protocols */
 function proto(l){
   if (l.indexOf('vless://')===0) return 'VLESS';
   if (l.indexOf('vmess://')===0) return 'VMESS';
@@ -711,7 +644,6 @@ function proto(l){
 }
 document.querySelectorAll('[data-proto]').forEach(function(el){ el.textContent = proto(el.getAttribute('data-proto')); });
 
-/* copy */
 function toast(msg){
   var t = document.getElementById('toast');
   t.textContent = msg || 'کپی شد!';
@@ -737,7 +669,6 @@ document.getElementById('copy-all').addEventListener('click', function(){
   else toast('کانفیگی یافت نشد!');
 });
 
-/* QR */
 function openQR(){
   document.getElementById('qr-modal').style.display = 'flex';
   new QRious({ element: document.getElementById('qr-canvas'), value: SUB_URL, size: 240, background:'#ffffff', foreground:'#141414', level:'H' });
